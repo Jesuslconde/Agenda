@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.model.Empleado;
 
 @Configuration
 @ComponentScan("com")
@@ -40,7 +41,7 @@ public class ApplicationContextConfig {
     public DataSource getDataSource() {
     	BasicDataSource dataSource = new BasicDataSource();
     	dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-    	dataSource.setUrl("jdbc:mysql://localhost:3306/usersdb");
+    	dataSource.setUrl("jdbc:mysql://localhost:3306/agenda");
     	dataSource.setUsername("root");
     	dataSource.setPassword("1111");
     	
@@ -60,7 +61,7 @@ public class ApplicationContextConfig {
     public SessionFactory getSessionFactory(DataSource dataSource) {
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(getHibernateProperties());
-    	sessionBuilder.addAnnotatedClasses();
+    	sessionBuilder.addAnnotatedClasses(Empleado.class);
     	return sessionBuilder.buildSessionFactory();
     }
     
