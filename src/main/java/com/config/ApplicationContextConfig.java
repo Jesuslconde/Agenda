@@ -17,6 +17,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.model.Persona;
+import com.model.Categoria;
+import com.model.Departamento;
+import com.model.Direccion;
+import com.model.Telefono;
 
 
 @Configuration
@@ -63,6 +67,10 @@ public class ApplicationContextConfig {
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(getHibernateProperties());
     	sessionBuilder.addAnnotatedClasses(Persona.class); //Agregar las clases que seran mapeadas a la table
+    	sessionBuilder.addAnnotatedClasses(Departamento.class);
+    	sessionBuilder.addAnnotatedClasses(Direccion.class);
+    	sessionBuilder.addAnnotatedClasses(Telefono.class);
+    	sessionBuilder.addAnnotatedClasses(Categoria.class);
     	return sessionBuilder.buildSessionFactory();
     }
     
