@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.model.Departamento;
 import com.model.Telefono;
 
 /**
@@ -16,7 +18,7 @@ import com.model.Telefono;
 
 
 @Repository
-public class ImpTelefonoDao implements InterfazDAO{
+public class TelefonoDAO implements InterfazDAO{
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -24,11 +26,11 @@ public class ImpTelefonoDao implements InterfazDAO{
 	/**
 	 * Constructores
 	 */
-	public ImpTelefonoDao(){
+	public TelefonoDAO(){
 		
 	}
 	
-	public ImpTelefonoDao(SessionFactory sessionFactory){
+	public TelefonoDAO(SessionFactory sessionFactory){
 		this.sessionFactory = sessionFactory;
 	}
 	
@@ -41,8 +43,12 @@ public class ImpTelefonoDao implements InterfazDAO{
 	@Override
 	@Transactional
 	public List<Telefono> list() {
-		
-		return null;
+		@SuppressWarnings("unchecked")
+		List<Telefono> listTelefono = (List<Telefono>) sessionFactory.getCurrentSession()
+				.createCriteria(Telefono.class)
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+
+		return listTelefono;
 	}
 	
 	/**
@@ -55,8 +61,7 @@ public class ImpTelefonoDao implements InterfazDAO{
 	@Override
 	@Transactional
 	public Telefono get(int id) {
-		
-		return (Telefono) sessionFactory.getCurrentSession().get(Telefono.class, id)
+		return (Telefono) sessionFactory.getCurrentSession().get(Telefono.class, id);
 		
 	}
 	
@@ -69,8 +74,8 @@ public class ImpTelefonoDao implements InterfazDAO{
 	 */
 	@Override
 	@Transactional
-	public void saveOrUpdate(Telefono telefono) {
-		// TODO Auto-generated method stub
+	public void saveOrUpdate(Object telefono) {
+		sessionFactory.getCurrentSession().saveOrUpdate((Departamento)telefono);
 		
 	}
 	
@@ -83,8 +88,12 @@ public class ImpTelefonoDao implements InterfazDAO{
 	@Override
 	@Transactional
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		
+		Telefono telefonoToDelete = new Telefono();
+		telefonoToDelete.setIdtelefono(id);
+		sessionFactory.getCurrentSession().delete(telefonoToDelete);
 		
 	}
+
 
 }
