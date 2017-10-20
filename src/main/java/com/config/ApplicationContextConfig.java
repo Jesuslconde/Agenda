@@ -16,10 +16,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.model.Persona;
+import com.model.Categoria;
 import com.model.Departamento;
 import com.model.Direccion;
 import com.model.Telefono;
-
 
 
 @Configuration
@@ -45,7 +46,7 @@ public class ApplicationContextConfig {
     public DataSource getDataSource() {
     	BasicDataSource dataSource = new BasicDataSource();
     	dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-    	dataSource.setUrl("jdbc:mysql://localhost:3306/agenda");
+    	dataSource.setUrl("jdbc:mysql://localhost:3306/pruebas");
     	dataSource.setUsername("root");
     	dataSource.setPassword("1111");
     	
@@ -65,9 +66,11 @@ public class ApplicationContextConfig {
     public SessionFactory getSessionFactory(DataSource dataSource) {
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(getHibernateProperties());
+    	sessionBuilder.addAnnotatedClasses(Persona.class); //Agregar las clases que seran mapeadas a la table
     	sessionBuilder.addAnnotatedClasses(Departamento.class);
     	sessionBuilder.addAnnotatedClasses(Direccion.class);
     	sessionBuilder.addAnnotatedClasses(Telefono.class);
+    	sessionBuilder.addAnnotatedClasses(Categoria.class);
     	return sessionBuilder.buildSessionFactory();
     }
     
