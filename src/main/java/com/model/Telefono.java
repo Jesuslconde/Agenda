@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +18,11 @@ public class Telefono {
 	private  int idtelefono;
 	@Column(name="telefono")
 	private String telefono;
+	
+	@ManyToOne()
+	@JoinColumn(name="idpersonas")
+	private Persona persona;
+	
 	
 	//Getters and setters
 	public int getIdtelefono() {

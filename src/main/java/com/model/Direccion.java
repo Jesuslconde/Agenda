@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,8 +28,8 @@ public class Direccion {
 	private String localidad;
 	@Column(name="provincia")
 	private String provincia;
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idpersonas")
+	@OneToMany()
+	@JoinColumn(name = "idpersonas")
     private Set<Persona> persona;
 	
 	//Getters and setters

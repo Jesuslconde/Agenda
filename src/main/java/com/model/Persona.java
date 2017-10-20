@@ -38,13 +38,13 @@ public class Persona {
 	private String apellido2;
 	private String dni;
 	private Date fechaNacimiento;
-	/*
+	
 	@OneToMany(mappedBy="telefonos")
-	private List<Telefonos> listTelf;
+	private List<Telefono> listTelf;
 	
 	@OneToMany(mappedBy="direcciones")
-	private List<Direcciones> listDir;
-	
+	private List<Direccion> listDir;
+	/*
 	@OneToOne()
 	@JoinColum(name="idEmpleado", referencedColumName="idEmpleados")
 	private Empleado empleado;
