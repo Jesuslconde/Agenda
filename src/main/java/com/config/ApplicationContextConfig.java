@@ -40,7 +40,7 @@ public class ApplicationContextConfig {
     public DataSource getDataSource() {
     	BasicDataSource dataSource = new BasicDataSource();
     	dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-    	dataSource.setUrl("jdbc:mysql://localhost:3306/usersdb");
+    	dataSource.setUrl("jdbc:mysql://localhost:3306/agenda");
     	dataSource.setUsername("root");
     	dataSource.setPassword("1111");
     	
