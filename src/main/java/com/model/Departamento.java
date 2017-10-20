@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 /**
 *
 * @author Jesús,Álvaro,Rafael,Iván
@@ -20,6 +22,7 @@ import javax.persistence.Table;
 * @param descripcion Descripción del departamento.
 * @param empleados Empleados del departamento.
 */
+@Component
 @Entity
 @Table(name = "departamentos")
 public class Departamento {
@@ -36,7 +39,7 @@ public class Departamento {
     @JoinColumn(name = "idempleados")
 	private Set<Empleado> empleados;
 	
-	/** 
+		/** 
 	    * Constructor de clase vacío.
 	    */
 		public Departamento() {

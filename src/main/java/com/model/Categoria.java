@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 /**
 *
 * @author Jesús,Álvaro,Rafael,Iván
@@ -22,6 +24,7 @@ import javax.persistence.Table;
 * @param descripcion Descripción del departamento.
 * @param empleados Empleados del departamento.
 */
+@Component
 @Entity
 @Table(name = "categorias")
 public class Categoria implements Serializable {
