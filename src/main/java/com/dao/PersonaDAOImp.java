@@ -31,9 +31,10 @@ public class PersonaDAOImp implements IPersonaDAO{
 	@Transactional
 	public Persona get(Persona persona) {
 		Session session = sessionFactory.openSession();
-		Criteria criteria =  session.createCriteria(Persona.class).add(Restrictions.eq("idpersonas", persona.getId()));
+		Criteria criteria =  session.createCriteria(Persona.class).add(Restrictions.eq("id", persona.getId()));// id : nombre de clase Persona -> id (En model)
+		Persona person = (Persona)criteria.uniqueResult();
 		session.close();
-		return (Persona)criteria.uniqueResult();
+		return person;
 	}
 
 	@Override

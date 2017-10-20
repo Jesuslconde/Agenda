@@ -1,6 +1,5 @@
 package com.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -13,9 +12,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+* @author Rafael Ferrer
+*/
+
+/**
+ * @Entity Asigna el valor de una tabla a la clase Persona.
+ * @Table name asigna el nombre de la tabla "personas" a la clase Persona.
+ *
+ */
 @Entity
 @Table(name="personas")
 public class Persona {
+	
+	/**
+	 * @param id, GeneratedValue genera automaticamente un numero para id de Persona .
+	 * @param id, Colum(name) asigna la columna "idpersonas" en la BD al id de Persona.
+	 * */
 	@Id
 	@GeneratedValue
 	@Column(name="idpersonas")

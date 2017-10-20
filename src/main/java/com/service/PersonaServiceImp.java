@@ -23,7 +23,9 @@ public class PersonaServiceImp implements IPersonaService{
 	}
 
 	@Override
-	public Persona get(Persona persona) {
+	public Persona get(int id) {
+		Persona persona = new Persona();
+		persona.setId(id);
 		return this.personaDAO.get(persona);
 	}
 

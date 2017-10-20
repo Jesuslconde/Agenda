@@ -2,6 +2,8 @@ package com.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +43,15 @@ public class Supercontroller {
 			System.out.println("-- "+persona.getNombre());
 		ModelAndView model = new ModelAndView("PersonaList");
 		model.addObject("listPersonas", listPersonas);
+		return model;		
+	}
+	
+	@RequestMapping(value = "/viewPersona", method = RequestMethod.GET)
+	public ModelAndView verPersona(HttpServletRequest request) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Persona persona = this.personaService.get(id);
+		ModelAndView model = new ModelAndView("PersonaDetalle");
+		model.addObject("persona", persona);
 		return model;		
 	}
 	

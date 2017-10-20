@@ -6,7 +6,7 @@ import com.model.Persona;
 
 public interface IPersonaService {
 	public List<Persona> list();
-	public Persona get(Persona persona);
+	public Persona get(int id);
 	public void saveoOrUpdate(Persona persona);
 	public void delete(Persona persona);
 }
