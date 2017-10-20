@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>PersonaForm</title>
 </head>
 <body>
-	<h1>Opciones Agenda</h1>
-	<a href="newPersona">+ Nueva Persona Form</a><br>
-	<a href="listPersona">+ Persona List</a>
+	<h1>Nueva Persona</h1>
+	
 </body>
 </html>
