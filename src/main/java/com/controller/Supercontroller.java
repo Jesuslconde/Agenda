@@ -1,7 +1,9 @@
 package com.controller;
 
-import java.util.List;
 
+
+
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import com.service.EmpleadoService;
 
 
 
+
 @Controller
 public class Supercontroller {
 	
@@ -24,40 +27,36 @@ public class Supercontroller {
 	private EmpleadoService empleadoService;
 
 	@RequestMapping("/")
-	public ModelAndView handleRequest() throws Exception {
-		List<Empleado> listEmpleados = empleadoService.list();
-		ModelAndView model = new ModelAndView("EmpleadoList");
-		model.addObject("empleadoList", listEmpleados);
+	public ModelAndView inicio() throws Exception{
+
+		ModelAndView model = new ModelAndView("inicio");
+		
 		return model;
 	}
 	
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	@RequestMapping(value = "/newEmpleado", method = RequestMethod.GET)
 	public ModelAndView newEmpleado() {
 		ModelAndView model = new ModelAndView("EmpleadoForm");
-		model.addObject("user", new Empleado());
+		model.addObject("persona", new Empleado());
 		return model;		
 	}
 	
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView editEmpleado(HttpServletRequest request) {
-		int empleadoId = Integer.parseInt(request.getParameter("id"));
-		Empleado empleado = empleadoService.get(empleadoId);
-		ModelAndView model = new ModelAndView("EmpleadoForm");
+	@RequestMapping(value = "/listEmpleado", method = RequestMethod.GET)
+	public ModelAndView listEmpleado() {
+		List<Empleado> listEmpleados = this.empleadoService.list();
+		for(Empleado empleado : listEmpleados)
+			System.out.println("-- "+empleado.getCodEmpleado());
+		ModelAndView model = new ModelAndView("EmpleadoList");//Nombre del formulario
+		model.addObject("listEmpleados", listEmpleados);
+		return model;		
+	}
+	
+	@RequestMapping(value = "/viewEmpleado", method = RequestMethod.GET)
+	public ModelAndView verEmpleado(HttpServletRequest request) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Empleado empleado = this.empleadoService.get(id);
+		ModelAndView model = new ModelAndView("EmpleadoDetalle");
 		model.addObject("empleado", empleado);
 		return model;		
 	}
-	
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public ModelAndView deleteEmpleado(HttpServletRequest request) {
-		int empleadoId = Integer.parseInt(request.getParameter("id"));
-		empleadoService.delete(empleadoId);
-		return new ModelAndView("redirect:/");		
-	}
-	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView saveUser(@ModelAttribute Empleado empleado) {
-		empleadoService.saveOrUpdate(empleado);
-		return new ModelAndView("redirect:/");
-	}
-	
 }

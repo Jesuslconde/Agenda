@@ -30,7 +30,7 @@
 			<th>fecha de Alta</th>
 			</tr>
 
-			<c:forEach var="user" items="${empleadoList}" varStatus="status">
+			<c:forEach var="user" items="${listEmpleados}" varStatus="status">//listEmplea
 				<tr>
 					<td>${status.index + 1}</td>
 					<td>${empleado.cod_Empleado}</td>

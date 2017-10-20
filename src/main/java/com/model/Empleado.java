@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import com.model.Persona;
 
 @Entity
-@Table(name = "agenda")
+@Table(name = "empleados")
 public class Empleado implements Serializable{
 	
 	/**
@@ -22,7 +22,7 @@ public class Empleado implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private int id;
-	private String cod_empleado;
+	private String codEmpleado;
 	private int salario;
 	private String f_alta;
 	
@@ -39,11 +39,11 @@ public class Empleado implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getCod_empleado() {
-		return cod_empleado;
+	public String getCodEmpleado() {
+		return codEmpleado;
 	}
-	public void setCod_empleado(String cod_empleado) {
-		this.cod_empleado = cod_empleado;
+	public void setCodEmpleado(String codEmpleado) {
+		this.codEmpleado = codEmpleado;
 	}
 	public int getSalario() {
 		return salario;
