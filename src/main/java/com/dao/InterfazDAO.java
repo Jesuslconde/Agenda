@@ -3,12 +3,14 @@ package com.dao;
 import java.util.List;
 
 
-public interface InterfazDAO {
-	public <E> List<E> list();
+
+public interface InterfazDAO<T> {
+	public <T> List<T> list();
 	
-	public <E> E get(int id);
+	public <T> T get(int id);
 	
-	public <E> void saveOrUpdate(E e);
+	public <T> void saveOrUpdate(T obj);
 	
 	public void delete(int id);
+
 }

@@ -16,6 +16,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.model.Departamento;
+
 
 @Configuration
 @ComponentScan("com")
@@ -60,7 +62,7 @@ public class ApplicationContextConfig {
     public SessionFactory getSessionFactory(DataSource dataSource) {
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(getHibernateProperties());
-    	sessionBuilder.addAnnotatedClasses();
+    	sessionBuilder.addAnnotatedClasses(Departamento.class);
     	return sessionBuilder.buildSessionFactory();
     }
     
