@@ -11,12 +11,12 @@ import org.springframework.stereotype.Repository;
 import com.model.Telefono;
 
 /**
- * @Param
+ * @Param SessionFactory
  */
 
 
 @Repository
-public class ImpTelefonoDao implements InterfazDAO{
+public class ImpTelefonoDao implements InterfazDAO<Telefono>{
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -56,7 +56,7 @@ public class ImpTelefonoDao implements InterfazDAO{
 	@Transactional
 	public Telefono get(int id) {
 		
-		return (Telefono) sessionFactory.getCurrentSession().get(Telefono.class, id)
+		return (Telefono) sessionFactory.getCurrentSession().get(Telefono.class, id);
 		
 	}
 	

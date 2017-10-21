@@ -16,10 +16,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.controller.Supercontroller;
 import com.model.Categoria;
 import com.model.Departamento;
 import com.model.Direccion;
 import com.model.Telefono;
+import com.service.CategoriaService;
+import com.service.DepartamentoService;
 
 
 
@@ -66,6 +69,9 @@ public class ApplicationContextConfig {
     public SessionFactory getSessionFactory(DataSource dataSource) {
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(getHibernateProperties());
+    	sessionBuilder.addAnnotatedClasses(Supercontroller.class);
+    	sessionBuilder.addAnnotatedClasses(CategoriaService.class);
+    	sessionBuilder.addAnnotatedClasses(DepartamentoService.class);
     	sessionBuilder.addAnnotatedClasses(Departamento.class);
     	sessionBuilder.addAnnotatedClasses(Direccion.class);
     	sessionBuilder.addAnnotatedClasses(Telefono.class);

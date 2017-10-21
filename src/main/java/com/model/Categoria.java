@@ -85,7 +85,6 @@ public class Categoria implements Serializable {
 	}
 
 
-
 	public String getDescripcion() {
 		return descripcion;
 	}
