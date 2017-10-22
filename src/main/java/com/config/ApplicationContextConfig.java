@@ -21,6 +21,8 @@ import com.model.Categoria;
 import com.model.Departamento;
 import com.model.Direccion;
 import com.model.Telefono;
+import com.service.CategoriaService;
+import com.service.DepartamentoService;
 
 
 @Configuration

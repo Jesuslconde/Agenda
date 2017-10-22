@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.model.Departamento;
 
 @Repository
-public class DepartamentoDAO implements InterfazDAO {
+public class DepartamentoDAO implements InterfazDAO<Departamento> {
 
 		@Autowired
 		private SessionFactory sessionFactory;
@@ -22,11 +22,10 @@ public class DepartamentoDAO implements InterfazDAO {
 		public DepartamentoDAO(SessionFactory sessionFactory){
 			this.sessionFactory = sessionFactory;
 		}
-		
+		@SuppressWarnings("unchecked")
 		@Override
 		@Transactional
 		public List<Departamento> list() {
-			@SuppressWarnings("unchecked")
 			List<Departamento> listUser = (List<Departamento>) sessionFactory.getCurrentSession()
 					.createCriteria(Departamento.class)
 					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
@@ -36,8 +35,8 @@ public class DepartamentoDAO implements InterfazDAO {
 		
 		@Override
 		@Transactional
-		public void saveOrUpdate(Object dept) {
-			sessionFactory.getCurrentSession().saveOrUpdate((Departamento)dept);
+		public void saveOrUpdate(Departamento dept) {
+			sessionFactory.getCurrentSession().saveOrUpdate(dept);
 		}
 		
 		@Override
@@ -47,7 +46,6 @@ public class DepartamentoDAO implements InterfazDAO {
 			userToDelete.setId(id);
 			sessionFactory.getCurrentSession().delete(userToDelete);
 		}
-		
 		@Override
 		@Transactional
 		public Departamento get(int id) {

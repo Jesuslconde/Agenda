@@ -9,10 +9,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.model.Categoria;
-import com.model.Departamento;
 
 @Repository
-public class CategoriaDAO implements InterfazDAO {
+public class CategoriaDAO implements InterfazDAO<Categoria> {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -24,11 +23,11 @@ public class CategoriaDAO implements InterfazDAO {
 	public CategoriaDAO(SessionFactory sessionFactory){
 		this.sessionFactory = sessionFactory;
 	}
-	
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<Categoria> list() {
-		@SuppressWarnings("unchecked")
+		
 		List<Categoria> listUser = (List<Categoria>) sessionFactory.getCurrentSession()
 				.createCriteria(Categoria.class)
 				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
@@ -38,7 +37,7 @@ public class CategoriaDAO implements InterfazDAO {
 	
 	@Override
 	@Transactional
-	public void saveOrUpdate(Object cat) {
+	public void saveOrUpdate(Categoria cat) {
 		sessionFactory.getCurrentSession().saveOrUpdate((Categoria)cat);
 	}
 	

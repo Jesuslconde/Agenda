@@ -27,6 +27,35 @@ public class Supercontroller {
 		ModelAndView model = new ModelAndView("inicio");
 		
 		return model;
+		
+	}
+	@RequestMapping(value = "/newCategoria", method = RequestMethod.GET)
+	public ModelAndView newCategoria() {
+		ModelAndView model = new ModelAndView("UserForm");
+		model.addObject("categoria", new Categoria());
+		return model;		
+	}
+	
+	@RequestMapping(value = "/editCategoria", method = RequestMethod.GET)
+	public ModelAndView editUser(HttpServletRequest request) {
+		int userId = Integer.parseInt(request.getParameter("id"));
+		Categoria user = catService.get(userId);
+		ModelAndView model = new ModelAndView("UserForm");
+		model.addObject("user", user);
+		return model;		
+	}
+	
+	@RequestMapping(value = "/deleteCategoria", method = RequestMethod.GET)
+	public ModelAndView deleteUser(HttpServletRequest request) {
+		int userId = Integer.parseInt(request.getParameter("id"));
+		catService.delete(userId);
+		return new ModelAndView("redirect:/");		
+	}
+	
+	@RequestMapping(value = "/saveCategoria", method = RequestMethod.POST)
+	public ModelAndView saveUser(@ModelAttribute Categoria cat) {
+		catService.saveOrUpdate(cat);
+		return new ModelAndView("redirect:/");
 	}
 	
 	@RequestMapping(value = "/newPersona", method = RequestMethod.GET)
