@@ -1,11 +1,22 @@
 package com.controller;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+
+
+
+import java.util.List;
+>>>>>>> branch 'Empleado' of https://github.com/Jesuslconde/Agenda.git
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+<<<<<<< HEAD
+=======
+import org.springframework.web.bind.annotation.ModelAttribute;
+>>>>>>> branch 'Empleado' of https://github.com/Jesuslconde/Agenda.git
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,13 +25,23 @@ import com.model.Persona;
 import com.service.IPersonaService;
 
 
+import com.model.Empleado;
+import com.service.EmpleadoService;
+
+
+
 
 @Controller
 public class Supercontroller {
 	
 	@Autowired
+<<<<<<< HEAD
 	private IPersonaService personaService;
 	
+=======
+	private EmpleadoService empleadoService;
+
+>>>>>>> branch 'Empleado' of https://github.com/Jesuslconde/Agenda.git
 	@RequestMapping("/")
 	public ModelAndView inicio() throws Exception{
 
@@ -29,6 +50,7 @@ public class Supercontroller {
 		return model;
 		
 	}
+<<<<<<< HEAD
 	@RequestMapping(value = "/newCategoria", method = RequestMethod.GET)
 	public ModelAndView newCategoria() {
 		ModelAndView model = new ModelAndView("UserForm");
@@ -84,4 +106,32 @@ public class Supercontroller {
 		return model;		
 	}
 	
+=======
+	
+	@RequestMapping(value = "/newEmpleado", method = RequestMethod.GET)
+	public ModelAndView newEmpleado() {
+		ModelAndView model = new ModelAndView("EmpleadoForm");
+		model.addObject("persona", new Empleado());
+		return model;		
+	}
+	
+	@RequestMapping(value = "/listEmpleado", method = RequestMethod.GET)
+	public ModelAndView listEmpleado() {
+		List<Empleado> listEmpleados = this.empleadoService.list();
+		for(Empleado empleado : listEmpleados)
+			System.out.println("-- "+empleado.getCodEmpleado());
+		ModelAndView model = new ModelAndView("EmpleadoList");//Nombre del formulario
+		model.addObject("listEmpleados", listEmpleados);
+		return model;		
+	}
+	
+	@RequestMapping(value = "/viewEmpleado", method = RequestMethod.GET)
+	public ModelAndView verEmpleado(HttpServletRequest request) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Empleado empleado = this.empleadoService.get(id);
+		ModelAndView model = new ModelAndView("EmpleadoDetalle");
+		model.addObject("empleado", empleado);
+		return model;		
+	}
+>>>>>>> branch 'Empleado' of https://github.com/Jesuslconde/Agenda.git
 }
