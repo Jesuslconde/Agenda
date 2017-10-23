@@ -7,11 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-        <spring:url value="static/css/bootstrap.css" var="bootstrap"/>
-        <link href="${bootstrap}" rel="stylesheet" />
-        <spring:url value="static/css/custom.css" var="custom"/>
-        <link href="${custom}" rel="stylesheet" />  
+  
 
 <title>LISTADO DE EMPLEADOS</title>
 </head>
@@ -30,12 +26,12 @@
 			<th>fecha de Alta</th>
 			</tr>
 
-			<c:forEach var="user" items="${listEmpleados}" varStatus="status">//listEmplea
+			<c:forEach var="empleado" items="${listEmpleados}" varStatus="status">
 				<tr>
 					<td>${status.index + 1}</td>
-					<td>${empleado.cod_Empleado}</td>
+					<td>${empleado.codEmpleado}</td>
 					<td>${empleado.salario}</td>
-					<td>${empleado.f_alta}</td>
+					<td>${empleado.fechaAlta}</td>
 					<td><a href="edit?id=${empleado.id}">Modificar</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a href="delete?id=${empleado.id}">Eliminar</a>
 					</td>
