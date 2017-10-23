@@ -24,7 +24,9 @@ public class Empleado implements Serializable{
 	private int id;
 	private String codEmpleado;
 	private int salario;
-	private String f_alta;
+	private String fechaAlta;
+	private int idDepartamento;
+	private int idCategoria;
 	
 	@OneToOne(mappedBy="persona")
 	@JoinColumn(name="idempleados")
@@ -51,13 +53,25 @@ public class Empleado implements Serializable{
 	public void setSalario(int salario) {
 		this.salario = salario;
 	}
-	public String getF_alta() {
-		return f_alta;
+	public String getFechaAlta() {
+		return fechaAlta;
 	}
-	public void setF_alta(String f_alta) {
-		this.f_alta = f_alta;
+	public void setFechaAlta(String fechaAlta) {
+		this.fechaAlta = fechaAlta;
 	}
 	
+	public int getIdDepartamento() {
+		return idDepartamento;
+	}
+	public void setIdDepartamento(int idDepartamento) {
+		this.idDepartamento = idDepartamento;
+	}
+	public int getIdCategoria() {
+		return idCategoria;
+	}
+	public void setIdCategoria(int idCategoria) {
+		this.idCategoria = idCategoria;
+	}
 	public Persona persona() {
 		return persona;
 	}
