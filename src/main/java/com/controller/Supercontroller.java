@@ -83,5 +83,29 @@ public class Supercontroller {
 		model.addObject("persona", persona);
 		return model;		
 	}
+	@RequestMapping(value = "/newEmpleado", method = RequestMethod.GET)
+	public ModelAndView newEmpleado() {
+		ModelAndView model = new ModelAndView("EmpleadoForm");
+		model.addObject("persona", new Empleado());
+		return model;		
+	}
 	
+	@RequestMapping(value = "/listEmpleado", method = RequestMethod.GET)
+	public ModelAndView listEmpleado() {
+		List<Empleado> listEmpleados = this.empleadoService.list();
+		for(Empleado empleado : listEmpleados)
+			System.out.println("-- "+empleado.getCodEmpleado());
+		ModelAndView model = new ModelAndView("EmpleadoList");//Nombre del formulario
+		model.addObject("listEmpleados", listEmpleados);
+		return model;		
+	}
+	
+	@RequestMapping(value = "/viewEmpleado", method = RequestMethod.GET)
+	public ModelAndView verEmpleado(HttpServletRequest request) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Empleado empleado = this.empleadoService.get(id);
+		ModelAndView model = new ModelAndView("EmpleadoDetalle");
+		model.addObject("empleado", empleado);
+		return model;		
+	}
 }

@@ -1,5 +1,6 @@
 package com.model;
 
+<<<<<<< HEAD
 import java.util.Date;
 import java.util.List;
 
@@ -116,4 +117,8 @@ public class Persona {
 		this.listDir = listDir;
 	}
 	*/
+=======
+public class Persona {
+
+>>>>>>> branch 'Empleado' of https://github.com/Jesuslconde/Agenda.git
 }

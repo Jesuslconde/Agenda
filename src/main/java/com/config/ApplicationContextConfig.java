@@ -24,6 +24,7 @@ import com.model.Telefono;
 import com.service.CategoriaService;
 import com.service.DepartamentoService;
 
+import com.model.Empleado;
 
 @Configuration
 @ComponentScan("com")
@@ -73,6 +74,7 @@ public class ApplicationContextConfig {
     	sessionBuilder.addAnnotatedClasses(Direccion.class);
     	sessionBuilder.addAnnotatedClasses(Telefono.class);
     	sessionBuilder.addAnnotatedClasses(Categoria.class);
+    	sessionBuilder.addAnnotatedClasses(Empleado.class);
     	return sessionBuilder.buildSessionFactory();
     }
     
