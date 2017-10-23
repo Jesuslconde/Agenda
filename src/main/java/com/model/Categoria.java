@@ -103,7 +103,7 @@ public class Categoria implements Serializable {
 
 
 
-	public void setPersonas(Set<Empleados> empleados) {
+	public void setPersonas(Set<Empleado> empleados) {
 		this.empleados = empleados;
 	}
 
