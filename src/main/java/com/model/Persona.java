@@ -50,12 +50,11 @@ public class Persona implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idpersona")
 	private List<Telefono> listTelf = new ArrayList<>();
-	@OneToMany(cascade = CascadeType.ALL)
+	
+	/*@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idpersona")
 	private List<Direccion> listDir = new ArrayList<>();
-
-	@OneToMany(mappedBy="telefono")
-	private List<Telefono> listTelf = new ArrayList<>();
+	*/
 	
 	/*@ManyToOne()
 	@JoinColumn(name="iddirecciones")
@@ -125,17 +124,14 @@ public class Persona implements Serializable{
 
 	
 	//@OneToMany(targetEntity=Direccion.class, mappedBy="direcciones")
-	public List<Direccion> getListDir() {
-
+	//public List<Direccion> getListDir() {
 
 	/*public List<Direcciones> getListDir() {
-
 		return listDir;
 	}
 
 	public void setListDir(List<Direccion> listDir) {
 		this.listDir = listDir;
-
 	}
 
 	}*/

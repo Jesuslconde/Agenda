@@ -14,10 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.model.Persona;
 import com.service.IPersonaService;
 import com.service.InterfazService;
+import com.service.TelefonoServiceImp;
 import com.model.Categoria;
 import com.model.Empleado;
 import com.service.CategoriaService;
 import com.service.EmpleadoService;
+import com.service.IDireccionService;
 
 
 @Controller

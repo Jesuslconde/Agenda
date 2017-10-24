@@ -62,9 +62,9 @@ public class TelefonoDAO implements InterfazDAO<Telefono>{
 	 * @return 
 	 * @return		La lista de Objetos telefonos
 	 */
-	@Override
 	
-	public List<Telefono> get(int key) {
+	
+	public List<Telefono> getSearch(int key) {
 		
 		
 		String hql = "from Telefono where persona = " + key;
@@ -87,8 +87,8 @@ public class TelefonoDAO implements InterfazDAO<Telefono>{
 	 */
 	@Override
 	
-	public void saveOrUpdate(Object telefono) {
-		sessionFactory.getCurrentSession().saveOrUpdate((Departamento)telefono);
+	public void saveOrUpdate(Telefono telefono) {
+		sessionFactory.getCurrentSession().saveOrUpdate(telefono);
 		
 	}
 	
@@ -109,10 +109,9 @@ public class TelefonoDAO implements InterfazDAO<Telefono>{
 	}
 
 	@Override
-	public Object getSearch(String key) {
+	public Telefono get(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

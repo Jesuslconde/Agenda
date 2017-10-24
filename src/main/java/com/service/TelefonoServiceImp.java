@@ -26,6 +26,6 @@ public class TelefonoServiceImp {
 	public List<Telefono> get(String id) {
 		System.out.println("Pasa por servicio Telefono");
 		int key = Integer.parseInt(id);
-		return  this.telefonodao.get(key);
+		return  this.telefonodao.getSearch(key);
 	}
 }

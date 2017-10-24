@@ -41,12 +41,12 @@ public class DireccionDAO implements InterfazDAO<Direccion>{
 	}
 
 	@Override
-	public Object get(int id) {
+	public Direccion get(int id) {
 		return (Direccion) sessionFactory.getCurrentSession().get(Direccion.class, id);
 	}
 
 	@Override
-	public void saveOrUpdate(Object direccion) {
+	public void saveOrUpdate(Direccion direccion) {
 		sessionFactory.getCurrentSession().saveOrUpdate((Direccion)direccion);
 	}
 
@@ -75,6 +75,5 @@ public class DireccionDAO implements InterfazDAO<Direccion>{
 		List<Direccion> direccion = query.list();
 		return direccion;
 	}
-
 	
 }

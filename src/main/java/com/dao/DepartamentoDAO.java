@@ -53,5 +53,11 @@ public class DepartamentoDAO implements InterfazDAO<Departamento> {
 			
 		}
 
+		@Override
+		public <T> T getSearch(String key) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 
 }

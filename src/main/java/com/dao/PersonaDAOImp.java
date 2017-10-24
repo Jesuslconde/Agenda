@@ -52,4 +52,10 @@ public class PersonaDAOImp implements InterfazDAO<Persona>{
 		sessionFactory.getCurrentSession().delete(persona);		
 	}
 
+	@Override
+	public <T> T getSearch(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

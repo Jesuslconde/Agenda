@@ -26,7 +26,6 @@ public class CategoriaDAO implements InterfazDAO<Categoria> {
 	}
 	@SuppressWarnings("unchecked")
 	@Override
-	
 	public List<Categoria> list() {
 		
 		List<Categoria> listUser = (List<Categoria>) sessionFactory.getCurrentSession()
@@ -37,13 +36,11 @@ public class CategoriaDAO implements InterfazDAO<Categoria> {
 	}
 	
 	@Override
-	
 	public void saveOrUpdate(Categoria cat) {
 		sessionFactory.getCurrentSession().saveOrUpdate((Categoria)cat);
 	}
 	
 	@Override
-	
 	public void delete(int id) {
 		Categoria catToDelete = new Categoria();
 		catToDelete.setId(id);
@@ -51,9 +48,14 @@ public class CategoriaDAO implements InterfazDAO<Categoria> {
 	}
 	
 	@Override
-	
 	public Categoria get(int id) {
 		return (Categoria) sessionFactory.getCurrentSession().get(Categoria.class,id);
 		
+	}
+
+	@Override
+	public <T> T getSearch(String key) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

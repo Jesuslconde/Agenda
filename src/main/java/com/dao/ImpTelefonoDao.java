@@ -87,4 +87,10 @@ public class ImpTelefonoDao implements InterfazDAO<Telefono>{
 		
 	}
 
+	@Override
+	public <T> T getSearch(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
