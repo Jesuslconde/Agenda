@@ -20,14 +20,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<c:forEach var="persona" items="${listPersonas}" varStatus="status">
+				<c:forEach var="persona" items="${listPersonas}" varStatus="status">
+					<tr>
 						<td>${persona.id}</td>
 						<td>${persona.nombre}</td>
 						<td>${persona.apellido1} ${persona.apellido2}</td>
 						<td><a href="viewPersona?id=${persona.id}">Ver Detalle</a></td>
-					</c:forEach>
-				</tr>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 </body>

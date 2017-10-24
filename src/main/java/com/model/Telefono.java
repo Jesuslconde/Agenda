@@ -2,10 +2,14 @@ package com.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="telefonos")
@@ -16,6 +20,10 @@ public class Telefono {
 	private  int idtelefono;
 	@Column(name="telefono")
 	private String telefono;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="idPersona")
+	private Persona persona;
 	
 	//Getters and setters
 	public int getIdtelefono() {
@@ -30,6 +38,13 @@ public class Telefono {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	/*
+	public Persona getPersona() {
+		return persona;
+	}
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}*/
 	
 	//Constructores
 	public Telefono(){
@@ -40,6 +55,7 @@ public class Telefono {
 		this.idtelefono = idtelefono;
 		this.telefono = telefono;
 	}
+	
 	
 	//ToString
 	@Override
@@ -70,8 +86,5 @@ public class Telefono {
 			return false;
 		return true;
 	}
-	
-	
-	
 	
 }

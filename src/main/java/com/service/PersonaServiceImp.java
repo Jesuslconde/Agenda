@@ -5,9 +5,12 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.dao.IPersonaDAO;
+import com.dao.InterfazDAO;
+import com.dao.PersonaDAOImp;
 import com.model.Persona;
 
 @Service
@@ -15,7 +18,8 @@ import com.model.Persona;
 public class PersonaServiceImp implements IPersonaService{
 	
 	@Autowired
-	private IPersonaDAO personaDAO;
+	@Qualifier("PersonaDAOImp")
+	private InterfazDAO<Persona> personaDAO;
 	
 	@Override
 	public List<Persona> list() {
@@ -24,19 +28,19 @@ public class PersonaServiceImp implements IPersonaService{
 
 	@Override
 	public Persona get(int id) {
-		Persona persona = new Persona();
-		persona.setId(id);
-		return this.personaDAO.get(persona);
+		//Persona persona = new Persona();
+		//persona.setId(id);
+		System.out.println("-- id personService "+id);
+		return this.personaDAO.get(id);
 	}
 
 	@Override
-	public void saveoOrUpdate(Persona persona) {
-		this.personaDAO.saveoOrUpdate(persona);
+	public void saveOrUpdate(Persona persona) {
+		this.personaDAO.saveOrUpdate(persona);
 	}
 
 	@Override
 	public void delete(Persona persona) {
-		this.personaDAO.delete(persona);
+		this.personaDAO.delete(persona.getId());
 	}
-
 }

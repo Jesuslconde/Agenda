@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.model.Persona;
 
 @Repository
-public class PersonaDAOImp implements IPersonaDAO{
+public class PersonaDAOImp implements InterfazDAO<Persona>{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -29,9 +29,10 @@ public class PersonaDAOImp implements IPersonaDAO{
 
 	@Override
 	@Transactional
-	public Persona get(Persona persona) {
+	public Persona get(int id) {
+		//List<Telefono> listTelefono = 
 		Session session = sessionFactory.openSession();
-		Criteria criteria =  session.createCriteria(Persona.class).add(Restrictions.eq("id", persona.getId()));// id : nombre de clase Persona -> id (En model)
+		Criteria criteria =  session.createCriteria(Persona.class).add(Restrictions.eq("id", id));// id : nombre de clase Persona -> id (En model)
 		Persona person = (Persona)criteria.uniqueResult();
 		session.close();
 		return person;
@@ -39,13 +40,15 @@ public class PersonaDAOImp implements IPersonaDAO{
 
 	@Override
 	@Transactional
-	public void saveoOrUpdate(Persona persona) {
+	public void saveOrUpdate(Persona persona) {
 		sessionFactory.getCurrentSession().saveOrUpdate(persona);
 	}
 
 	@Override
 	@Transactional
-	public void delete(Persona persona) {
+	public void delete(int id) {
+		Persona persona = new Persona();
+		persona.setId(id);
 		sessionFactory.getCurrentSession().delete(persona);		
 	}
 

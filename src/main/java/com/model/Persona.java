@@ -1,8 +1,11 @@
 package com.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 /**
 * @author Rafael Ferrer
@@ -21,10 +27,15 @@ import javax.persistence.Table;
  * @Table name asigna el nombre de la tabla "personas" a la clase Persona.
  *
  */
+
 @Entity
 @Table(name="personas")
-public class Persona {
+public class Persona implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * @param id, GeneratedValue genera automaticamente un numero para id de Persona .
 	 * @param id, Colum(name) asigna la columna "idpersonas" en la BD al id de Persona.
@@ -38,15 +49,16 @@ public class Persona {
 	private String apellido2;
 	private String dni;
 	private Date fechaNacimiento;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idpersona")
+	private List<Telefono> listTelf = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idpersona")
+	private List<Direccion> listDir = new ArrayList<>();
 	/*
-	@OneToMany(mappedBy="telefonos")
-	private List<Telefonos> listTelf;
-	
-	@OneToMany(mappedBy="direcciones")
-	private List<Direcciones> listDir;
-	
 	@OneToOne()
-	@JoinColum(name="idEmpleado", referencedColumName="idEmpleados")
+	@JoinColumn(name="idEmpleado", referencedColumnName="idEmpleados")
 	private Empleado empleado;
 	*/
 	
@@ -99,21 +111,22 @@ public class Persona {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
-/*
-	public List<Telefonos> getListTelf() {
+	//@OneToMany(targetEntity=Telefono.class, mappedBy="telefonos")
+	public List<Telefono> getListTelf() {
 		return listTelf;
 	}
-
-	public void setListTelf(List<Telefonos> listTelf) {
+	
+	public void setListTelf(List<Telefono> listTelf) {
 		this.listTelf = listTelf;
 	}
-
-	public List<Direcciones> getListDir() {
+	
+	//@OneToMany(targetEntity=Direccion.class, mappedBy="direcciones")
+	public List<Direccion> getListDir() {
 		return listDir;
 	}
 
-	public void setListDir(List<Direcciones> listDir) {
+	public void setListDir(List<Direccion> listDir) {
 		this.listDir = listDir;
 	}
-	*/
+
 }

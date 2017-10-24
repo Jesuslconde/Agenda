@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.model.Persona;
 import com.service.IPersonaService;
+import com.service.InterfazService;
 import com.model.Categoria;
 import com.model.Empleado;
 import com.service.CategoriaService;
@@ -24,18 +25,18 @@ public class Supercontroller {
 	
 	@Autowired
 	private IPersonaService personaService;
+	
+	/*
 	private EmpleadoService empleadoService;
 	private CategoriaService catService;
+	*/
 
 	@RequestMapping("/")
 	public ModelAndView inicio() throws Exception{
-
 		ModelAndView model = new ModelAndView("inicio");
-		
 		return model;
-		
 	}
-
+/*
 	@RequestMapping(value = "/newCategoria", method = RequestMethod.GET)
 	public ModelAndView newCategoria() {
 		ModelAndView model = new ModelAndView("UserForm");
@@ -64,6 +65,7 @@ public class Supercontroller {
 		catService.saveOrUpdate(cat);
 		return new ModelAndView("redirect:/");
 	}
+*/	
 	
 	@RequestMapping(value = "/newPersona", method = RequestMethod.GET)
 	public ModelAndView newPersona() {
@@ -91,6 +93,7 @@ public class Supercontroller {
 		return model;		
 	}
 	
+	/*
 	@RequestMapping(value = "/newEmpleado", method = RequestMethod.GET)
 	public ModelAndView newEmpleado() {
 		ModelAndView model = new ModelAndView("EmpleadoForm");
@@ -116,4 +119,5 @@ public class Supercontroller {
 		model.addObject("empleado", empleado);
 		return model;		
 	}
+	*/
 }

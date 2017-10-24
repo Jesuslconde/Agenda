@@ -24,7 +24,7 @@ public interface IPersonaDAO {
 	 * Metodo para guardar una nueva Persona o guardar los cambios si existe en la BD. 
 	 * @param persona, objeto de la clase Persona que se desea guardar o actualizar en la BD.
 	 */
-	public void saveoOrUpdate(Persona persona);
+	public void saveOrUpdate(Persona persona);
 	/**
 	 * Metodo para eliminar una persona
 	 * @param persona, objeto de la clase Persona que se va a eliminar en el BD,
