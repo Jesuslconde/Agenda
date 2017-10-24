@@ -5,13 +5,15 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.model.Persona;
+import org.springframework.stereotype.Component;
 
+@Component
 @Entity
 @Table(name = "empleados")
 public class Empleado implements Serializable{
@@ -20,26 +22,31 @@ public class Empleado implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idempleados")
+	private int idEmp;
 	private String codEmpleado;
 	private int salario;
 	private String fechaAlta;
-	private int idDepartamento;
-	private int idCategoria;
 	
+	@ManyToOne()
+    @JoinColumn(name = "iddepartamento")
+	private Departamento depart;
+	
+	@ManyToOne()
+    @JoinColumn(name = "idCategoria")
+	private Categoria cat;
+	/*
 	@OneToOne(mappedBy="persona")
 	@JoinColumn(name="idempleados")
 	private Persona persona;
-	
-	@Id
-	@GeneratedValue
-	@Column(name = "idempleados")
+	*/
 	public int getId() {
-		return id;
+		return idEmp;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.idEmp = id;
 	}
 	public String getCodEmpleado() {
 		return codEmpleado;
@@ -60,22 +67,24 @@ public class Empleado implements Serializable{
 		this.fechaAlta = fechaAlta;
 	}
 	
-	public int getIdDepartamento() {
-		return idDepartamento;
+	public Departamento getIdDepartamento() {
+		return depart;
 	}
-	public void setIdDepartamento(int idDepartamento) {
-		this.idDepartamento = idDepartamento;
+	public void setIdDepartamento(Departamento departamento) {
+		this.depart = departamento;
 	}
-	public int getIdCategoria() {
-		return idCategoria;
+	public Categoria getCategoria() {
+		return cat;
 	}
-	public void setIdCategoria(int idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setIdCategoria(Categoria categoria) {
+		this.cat = categoria;
 	}
-	public Persona persona() {
+	/*
+	public Persona getPersona() {
 		return persona;
 	}
-	public void Persona(Persona persona) {
+	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
+	*/
 }

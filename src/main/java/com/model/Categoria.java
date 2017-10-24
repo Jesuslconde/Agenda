@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -42,15 +43,14 @@ public class Categoria implements Serializable {
 	@Column(name = "descripcion")
 	private String descripcion;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idempleados")
+	@OneToMany(mappedBy="cat")
 	private Set<Empleado> empleados;
-
+	
 	/** 
     * Constructor de clase vacío.
     */
 	public Categoria() {
-		
+		System.out.println("constructor categoria");
 	}
 
 	/** 
@@ -61,6 +61,7 @@ public class Categoria implements Serializable {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.empleados = empleados;
+		System.out.println("--constructor categoria");
 	}
 
 
@@ -96,17 +97,17 @@ public class Categoria implements Serializable {
 	}
 
 
-
+	
 	public Set<Empleado> getPersonas() {
 		return empleados;
 	}
 
 
 
-	public void setPersonas(Set<Empleados> empleados) {
+	public void setPersonas(Set<Empleado> empleados) {
 		this.empleados = empleados;
 	}
-
+	
 
 
 	@Override

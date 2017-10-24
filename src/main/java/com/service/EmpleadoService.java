@@ -4,13 +4,45 @@ import java.util.List;
 
 import com.model.Empleado;
 
-public interface EmpleadoService {
+public class EmpleadoService implements InterfazService<Empleado>{
 
-public List<Empleado> list();
 	
-	public Empleado get(int id);
+	@Override
+	public List list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Empleado get(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void saveOrUpdate(Empleado user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Empleado buscaPorEmpleados(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Empleado> buscaListado(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
-	public void saveOrUpdate(Empleado Empleado);
-	
-	public void delete(int id);
+
 }

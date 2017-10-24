@@ -4,10 +4,15 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.model.Categoria;
 import com.model.Departamento;
+import com.model.Empleado;
 
 @Repository
 public class DepartamentoDAO implements InterfazDAO<Departamento> {
@@ -21,6 +26,13 @@ public class DepartamentoDAO implements InterfazDAO<Departamento> {
 		
 		public DepartamentoDAO(SessionFactory sessionFactory){
 			this.sessionFactory = sessionFactory;
+		}
+		@Override
+		public Departamento buscaPorEmpleados(int id){
+			Criteria crit = sessionFactory.getCurrentSession().createCriteria(Empleado.class);
+			crit.add(Restrictions.eq("id",id));
+			Empleado empleado = (Empleado) crit.uniqueResult();
+			return empleado.getIdDepartamento();
 		}
 		@SuppressWarnings("unchecked")
 		@Override
@@ -51,6 +63,12 @@ public class DepartamentoDAO implements InterfazDAO<Departamento> {
 		public Departamento get(int id) {
 			return (Departamento) sessionFactory.getCurrentSession().get(Departamento.class,id);
 			
+		}
+
+		@Override
+		public List<Empleado> buscaListadoCat(int id) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 

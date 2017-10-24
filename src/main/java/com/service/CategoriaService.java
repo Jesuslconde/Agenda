@@ -5,10 +5,12 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.dao.InterfazDAO;
 import com.model.Categoria;
+import com.model.Empleado;
 
 
 @Service
@@ -16,22 +18,41 @@ import com.model.Categoria;
 public class CategoriaService implements InterfazService<Categoria>{
 
 	@Autowired
+	@Qualifier("categoriaDAO")
 	private InterfazDAO<Categoria> catDAO;
+	
+	@Autowired
+	@Qualifier("empleadoDAO")
+	private InterfazDAO<Empleado> empDAO;
 	
 	
 	public CategoriaService(){
-		
+		System.out.println("constructor categoriaDAO");
 	}
 	
-	public CategoriaService(InterfazDAO catDAO) {
+	public CategoriaService(InterfazDAO<Categoria> catDAO) {
+		this.catDAO = catDAO;
+		System.out.println("-constructor categoriaDAO");
+	}
+	
+	public InterfazDAO<Categoria> getCatDAO() {
+		return catDAO;
+	}
+
+	public void setCatDAO(InterfazDAO<Categoria> catDAO) {
 		this.catDAO = catDAO;
 	}
-	
-
-
+	@Override
+	public Categoria buscaPorEmpleados(int id){
+		return this.catDAO.buscaPorEmpleados(id);
+	}
+	@Override
+	public List<Empleado> buscaListado(int id){
+		return empDAO.buscaListadoCat(id);
+	}
 	@Override
 	public List<Categoria> list() {
-
+		System.out.println("--CategoriaService.list");
 		return catDAO.list();
 	}
 

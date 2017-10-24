@@ -8,12 +8,9 @@
 </head>
 <body>
 	<h1>Opciones Agenda</h1>
-<<<<<<< HEAD
-	<a href="newPersona">+ Nueva Persona Form</a><br>
-	<a href="listPersona">+ Persona List</a>
-=======
-	<a href="newEmpleado">+ Nuevo Empleado Form</a><br>
-	<a href="listEmpleado">+ Empleado List</a>
->>>>>>> branch 'Empleado' of https://github.com/Jesuslconde/Agenda.git
+	<a href="newCategoria">+ Nueva Persona Form</a><br>
+	<a href="aaa">+ Categoria/EmpleadoID List</a>
+	<a href="ListadoEmp">+ ListadoEmp por Cat</a><br>
+	<a href="listCat">+ Categoria List</a>
 </body>
 </html>
