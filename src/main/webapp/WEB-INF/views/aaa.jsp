@@ -21,11 +21,11 @@
 			</thead>
 			<tbody>
 				<tr>
-					<c:forEach var="persona" items="${listPersonas}" varStatus="status">
+					<c:forEach var="catServ" items="${lista}" varStatus="status">
 						<td>${persona.id}</td>
 						<td>${persona.nombre}</td>
-						<td>${persona.apellido1} ${persona.apellido2}</td>
-						<td><a href="viewPersona?id=${persona.id}">Ver Detalle</a></td>
+						<td>${persona.descripcion}</td>
+						<td><a href="viewPersona?id=${categoria.id}">Ver Detalle</a></td>
 					</c:forEach>
 				</tr>
 			</tbody>

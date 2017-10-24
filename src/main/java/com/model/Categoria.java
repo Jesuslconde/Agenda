@@ -36,9 +36,8 @@ public class Categoria implements Serializable {
 	@Column(name = "descripcion")
 	private String descripcion;
 	
-	/*@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idempleados")
-	private Set<Empleado> empleados;*/
+	@OneToMany(mappedBy="cat")
+	private Set<Empleado> empleados;
 
 	/** 
     * Constructor de clase vacío.
@@ -50,12 +49,14 @@ public class Categoria implements Serializable {
 	/** 
     * Constructor de clase con todos los parámetros.
     */
-	/*public Categoria(Integer id, String nombre, String descripcion, Set<Empleado> empleados) {
+	public Categoria(Integer id, String nombre, String descripcion, Set<Empleado> empleados) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.empleados = empleados;
-	}*/
+		System.out.println("--constructor categoria");
+	}		
+
 
 
 	
@@ -92,7 +93,7 @@ public class Categoria implements Serializable {
 
 
 
-	/*public Set<Empleado> getPersonas() {
+	public Set<Empleado> getPersonas() {
 		return empleados;
 	}
 
@@ -101,7 +102,8 @@ public class Categoria implements Serializable {
 	public void setPersonas(Set<Empleados> empleados) {
 		this.empleados = empleados;
 	}
-*/
+	
+	
 
 
 	@Override

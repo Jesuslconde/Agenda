@@ -1,13 +1,18 @@
 package com.model;
 
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,21 +24,22 @@ import org.springframework.stereotype.Component;
 * @param empleados Empleados del departamento.
 */
 @Component
+@Qualifier("departamento")
 @Entity
 @Table(name = "departamentos")
 public class Departamento {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ididdepartamento")
-	private Integer id;
+	@Column(name = "iddepartamento")
+	private Integer iddepartamento;
 	
 	@Column(name = "nombre")
 	private String nombre;
 	
-	/*@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idempleados")
-	//private Set<Empleado> empleados;*/
+	
+	@OneToMany(mappedBy = "depart")
+	private Set<Empleado> empleados;
 	
 		/** 
 	    * Constructor de clase vacío.
@@ -45,18 +51,18 @@ public class Departamento {
 		/** 
 	    * Constructor de clase con todos los parámetros.
 	    */
-		/*public Departamento(Integer id, String nombre, Set<Empleado> empleados) {
-			this.id = id;
+		public Departamento(Integer id, String nombre, Set<Empleado> empleados) {
+			this.iddepartamento = id;
 			this.nombre = nombre;
 			this.empleados = empleados;
-		}*/
+		}
 
 		public Integer getId() {
-			return id;
+			return iddepartamento;
 		}
 
 		public void setId(int id){
-			this.id = id;
+			this.iddepartamento = id;
 		}
 		public String getNombre() {
 			return nombre;
@@ -66,19 +72,19 @@ public class Departamento {
 			this.nombre = nombre;
 		}
 
-		/*public Set<Empleado> getEmpleados() {
+		public Set<Empleado> getEmpleados() {
 			return empleados;
 		}
 
 		public void setEmpleados(Set<Empleado> empleados) {
 			this.empleados = empleados;
-		}*/
+		}
 
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + ((id == null) ? 0 : id.hashCode());
+			result = prime * result + ((iddepartamento == null) ? 0 : iddepartamento.hashCode());
 			return result;
 		}
 
@@ -91,17 +97,17 @@ public class Departamento {
 			if (getClass() != obj.getClass())
 				return false;
 			Departamento other = (Departamento) obj;
-			if (id == null) {
-				if (other.id != null)
+			if (iddepartamento == null) {
+				if (other.iddepartamento != null)
 					return false;
-			} else if (!id.equals(other.id))
+			} else if (!iddepartamento.equals(other.iddepartamento))
 				return false;
 			return true;
 		}
 
 		@Override
 		public String toString() {
-			return "Departamento [id=" + id + ", nombre=" + nombre + "]";
+			return "Departamento [id=" + iddepartamento + ", nombre=" + nombre + "]";
 		}
 		
 		
