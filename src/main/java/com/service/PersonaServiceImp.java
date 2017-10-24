@@ -30,10 +30,10 @@ public class PersonaServiceImp implements InterfazService<Persona>{
 	}
 
 	@Override
-	public Persona get(Persona id) {
-		int key = id.getId();
-		Persona per = this.perDAO.get(key);
-		return per;
+	public Persona get(int id) {
+	//	Integer key = id.getId();
+		//Persona per = this.perDAO.get(key);
+		return null;
 		
 	}
 
@@ -43,7 +43,9 @@ public class PersonaServiceImp implements InterfazService<Persona>{
 	}
 
 	@Override
-	public void delete(Persona persona) {
+	public void delete(int id) {
+		Persona persona = new Persona();
+		persona.setId(id);
 		this.perDAO.delete(persona);
 	}
 

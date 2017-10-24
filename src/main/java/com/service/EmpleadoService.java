@@ -61,15 +61,10 @@ public class EmpleadoService implements InterfazService<Empleado>{
 
 	@Override
 	public void delete(int id) {
-		empDAO.delete(id);
+		//empDAO.delete(id);
 		
 	}
 
-	@Override
-	public List<Empleado> buscaListado(Empleado empleado) {
-		// TODO Auto-generated method stub
-		return empDAO.buscaListado(empleado);
-	}
 
 	
 

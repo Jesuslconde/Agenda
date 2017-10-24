@@ -58,12 +58,8 @@ public class DepartamentoService implements InterfazService<Departamento>{
 
 	@Override
 	public void delete(int id) {
-		deptDAO.delete(id);
+		//deptDAO.delete(id);
 
 	}
 	
-	@Override
-	public List<Empleado> buscaListado(Departamento dept) {
-		return deptDAO.buscaListado(dept);
-	}
 }

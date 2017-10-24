@@ -31,7 +31,7 @@ public class TelefonoServiceImp implements InterfazService<Telefono>{
 		return null;
 	}
 	@Override
-	public Telefono get(Telefono id) {
+	public Telefono get(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -41,7 +41,7 @@ public class TelefonoServiceImp implements InterfazService<Telefono>{
 		
 	}
 	@Override
-	public void delete(Telefono obj) {
+	public void delete(int id) {
 		// TODO Auto-generated method stub
 		
 	}

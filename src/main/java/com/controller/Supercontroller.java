@@ -12,20 +12,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
 import com.model.Direccion;
 import com.model.Persona;
 import com.model.Telefono;
 import com.service.IDireccionService;
 import com.service.InterfazService;
 import com.service.TelefonoServiceImp;
-=======
+
 import com.model.Categoria;
 import com.model.Empleado;
 import com.service.CategoriaService;
 import com.service.InterfazService;
 
->>>>>>> branch 'icons' of https://github.com/Jesuslconde/Agenda.git
 
 
 
@@ -33,19 +31,9 @@ import com.service.InterfazService;
 public class Supercontroller {
 	
 	@Autowired
-<<<<<<< HEAD
-	private InterfazService<Persona> personaService;
-
-=======
-	private InterfazService<Empleado> empleadoService;
-	
-	/*
-	@Autowired
 	private InterfazService<Persona> personaService;
 	@Autowired
 	private InterfazService<Empleado> empleadoService;
-	*/
->>>>>>> branch 'icons' of https://github.com/Jesuslconde/Agenda.git
 	
 	@RequestMapping("/")
 	public ModelAndView inicio() throws Exception{
@@ -94,27 +82,9 @@ public class Supercontroller {
 		model.addObject("lista", listCat);
 		return model;		
 	}
-	@RequestMapping(value = "/editCategoria", method = RequestMethod.GET)
-	public ModelAndView editUser(HttpServletRequest request) {
-		int userId = Integer.parseInt(request.getParameter("id"));
-		Categoria user = catService.get(userId);
-		ModelAndView model = new ModelAndView("UserForm");
-		model.addObject("user", user);
-		return model;		
-	}
 	
-	@RequestMapping(value = "/deleteCategoria", method = RequestMethod.GET)
-	public ModelAndView deleteUser(HttpServletRequest request) {
-		int userId = Integer.parseInt(request.getParameter("id"));
-		catService.delete(userId);
-		return new ModelAndView("redirect:/");		
-	}
-	
-	@RequestMapping(value = "/saveCategoria", method = RequestMethod.POST)
-	public ModelAndView saveUser(@ModelAttribute Categoria cat) {
-		catService.saveOrUpdate(cat);
-		return new ModelAndView("redirect:/");
-	}
+
+
 	/*
 	@RequestMapping(value = "/newPersona", method = RequestMethod.GET)
 	public ModelAndView newPersona() {

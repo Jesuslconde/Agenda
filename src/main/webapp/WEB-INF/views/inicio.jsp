@@ -9,7 +9,6 @@
 <title>Agenda</title>
 </head>
 <body>
-<<<<<<< HEAD
 	<h1>Opciones Agenda</h1>
 	<c:forEach items="${personas}" var="per">
 		
@@ -19,15 +18,6 @@
 			<h2>${pertel.telefono}</h2>
 		</c:forEach>
 	 </c:forEach>
-	<a href="newPersona">+ Nueva Persona Form</a><br>
-	<a href="listPersona">+ Persona List</a>
 	
-=======
-	<h1>Opciones Agenda</h1>
-	<a href="newCategoria">+ Nueva Persona Form</a><br>
-	<a href="aaa">+ Categoria/EmpleadoID List</a>
-	<a href="ListadoEmp">+ ListadoEmp por Cat</a><br>
-	<a href="list">+ List</a>
->>>>>>> branch 'icons' of https://github.com/Jesuslconde/Agenda.git
 </body>
 </html>

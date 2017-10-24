@@ -1,11 +1,14 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -99,7 +102,7 @@ public class Categoria implements Serializable {
 
 
 
-	public void setPersonas(Set<Empleados> empleados) {
+	public void setPersonas(Set<Empleado> empleados) {
 		this.empleados = empleados;
 	}
 	

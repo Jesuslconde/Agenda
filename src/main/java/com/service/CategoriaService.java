@@ -67,14 +67,11 @@ public class CategoriaService implements InterfazService<Categoria>{
 	public void saveOrUpdate(Categoria t) {
 		catDAO.saveOrUpdate(t);
 	}
-	
+
 	@Override
 	public void delete(int id) {
-		catDAO.delete(id);
+		// TODO Auto-generated method stub
+		
 	}
 	
-	@Override
-	public List<Empleado> buscaListado(Categoria cat){
-		return catDAO.buscaListado(cat);
-	}
 }
