@@ -23,7 +23,9 @@ public class PersonaDAO implements InterfazDAO<Persona>{
 		System.out.println("Entra en Persona dao");
 		@SuppressWarnings("unchecked")
 		List<Persona> listPersonas = (List<Persona>)sessionFactory.getCurrentSession().createCriteria(Persona.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-		
+		for (Persona persona : listPersonas) {
+			System.out.println(persona.toString());
+		}
 		return listPersonas;
 	}
 

@@ -13,7 +13,10 @@
 	<c:forEach items="${personas}" var="per">
 		
 		<h2>${per.nombre}${per.apellido1}${per.apellido2}</h2>
-
+		
+		<c:forEach items="${per.listTelf}" var="pertel">
+			<h2>${pertel.telefono}</h2>
+		</c:forEach>
 	 </c:forEach>
 	<a href="newPersona">+ Nueva Persona Form</a><br>
 	<a href="listPersona">+ Persona List</a>

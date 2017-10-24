@@ -3,7 +3,7 @@ package com.model;
 import java.io.Serializable;
 
 import java.util.Date;
-
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -47,8 +48,8 @@ public class Persona implements Serializable {
 	private String dni;
 	private Date fechaNacimiento;
 	
-	//@OneToMany(mappedBy="personat")
-	//private Collection<Telefono> listTelf;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="personat")
+	private List<Telefono> listTelf;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idDirecciones")
@@ -119,13 +120,13 @@ public class Persona implements Serializable {
 	}
 	
 
-	/*public Collection<Telefono> getListTelf() {
+	public List<Telefono> getListTelf() {
 		return listTelf;
 	}
 
-	public void setListTelf(Collection<Telefono> listTelf) {
+	public void setListTelf(List<Telefono> listTelf) {
 		this.listTelf = listTelf;
-	}*/
+	}
 
 
 	public Direccion getdir() {
