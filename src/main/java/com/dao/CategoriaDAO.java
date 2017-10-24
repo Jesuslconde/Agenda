@@ -9,11 +9,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.model.Categoria;
-import com.model.Departamento;
 
 @Repository
 @Transactional
-public class CategoriaDAO implements InterfazDAO {
+public class CategoriaDAO implements InterfazDAO<Categoria> {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -38,21 +37,17 @@ public class CategoriaDAO implements InterfazDAO {
 	}
 	
 	@Override
-	
-	public void saveOrUpdate(Object cat) {
+	public void saveOrUpdate(Categoria cat) {
 		sessionFactory.getCurrentSession().saveOrUpdate((Categoria)cat);
 	}
 	
-	@Override
 	
-	public void delete(int id) {
-		Categoria catToDelete = new Categoria();
-		catToDelete.setId(id);
+	@Override
+	public void delete(Categoria catToDelete) {
 		sessionFactory.getCurrentSession().delete(catToDelete);
 	}
 	
-	@Override
-	
+	@Override	
 	public Categoria get(int id) {
 		return (Categoria) sessionFactory.getCurrentSession().get(Categoria.class,id);
 		

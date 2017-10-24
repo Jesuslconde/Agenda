@@ -11,6 +11,6 @@
 	<a href="newPersona">+ Nueva Persona Form</a><br>
 	<a href="listPersona">+ Persona List</a>
 	
-	<li><a href="direccion?key=1">+ Modificar</a></li>
+	<li><a href="persona?key=1">+ Modificar</a></li>
 </body>
 </html>

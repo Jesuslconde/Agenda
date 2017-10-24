@@ -12,7 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.transaction.annotation.Transactional;
+
+
 @Entity
+@Transactional
 @Table(name="telefonos")
 public class Telefono implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -21,12 +25,12 @@ public class Telefono implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idtelefonos")
 	private  int idtelefono;
-	@Column(name="telefono")
+	@Column(name="telefono")          
 	private String telefono;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idPersona")
-	private Persona persona;
+	private Persona personat;
 	
 	
 	//Getters and setters
@@ -51,7 +55,7 @@ public class Telefono implements Serializable{
 		super();
 		this.idtelefono = idtelefono;
 		this.telefono = telefono;
-		this.persona = persona;
+		this.personat = persona;
 	}
 	
 	//ToString
@@ -85,10 +89,10 @@ public class Telefono implements Serializable{
 	}
 	
 	public Persona getpersona(){
-		return persona;
+		return personat;
 	}
 	public void setpersona(Persona persona){
-		this.persona=persona;
+		this.personat=persona;
 	}
 	
 	

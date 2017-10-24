@@ -1,24 +1,20 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Set;
-
-
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component
+
 @Entity
+@Transactional
 @Table(name="direcciones")
 public class Direccion implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -36,8 +32,8 @@ public class Direccion implements Serializable {
 	@Column(name="provincia")
 	private String provincia;
 	
-	//@OneToMany(mappedBy = "id")
-    //private List<Persona> persona;
+	@OneToMany(mappedBy="dir")
+    private Collection<Persona> personad;
 	
 	//Getters and setters
 	public int getIddireccion() {
@@ -71,17 +67,24 @@ public class Direccion implements Serializable {
 		this.provincia = provincia;
 	}
 	
+	public Collection<Persona> getPersonad() {
+		return personad;
+	}
+	public void setPersonad(Collection<Persona> personad) {
+		this.personad = personad;
+	}
 	//Constructores
 	public Direccion(){
 		
 	}
-	public Direccion(int iddireccion, String direccion, String codpostal, String localidad, String provincia) {
+	public Direccion(int iddireccion, String direccion, String codpostal, String localidad, String provincia, Collection<Persona> personad) {
 		super();
 		this.iddireccion = iddireccion;
 		this.direccion = direccion;
 		this.codpostal = codpostal;
 		this.localidad = localidad;
 		this.provincia = provincia;
+		this.personad = personad;
 	}
 	
 	//ToString

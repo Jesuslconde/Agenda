@@ -5,13 +5,10 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.model.Departamento;
-import com.model.Direccion;
 import com.model.Telefono;
 
 /**
@@ -62,20 +59,11 @@ public class TelefonoDAO implements InterfazDAO<Telefono>{
 	 * @return 
 	 * @return		La lista de Objetos telefonos
 	 */
-	@Override
 	
-	public List<Telefono> get(int key) {
-		
-		
-		String hql = "from Telefono where persona = " + key;
-		String hq = "FROM Telefono t, Persona p where t.persona=p.id and p.id=" + key;
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		
-		System.out.println(query.list().toString());
-		List<Telefono> telefono = query.list();
-		
-		return telefono;
-		
+	
+	public Telefono get(int key) {
+		return null;
+	
 	}
 	
 	/**
@@ -87,8 +75,8 @@ public class TelefonoDAO implements InterfazDAO<Telefono>{
 	 */
 	@Override
 	
-	public void saveOrUpdate(Object telefono) {
-		sessionFactory.getCurrentSession().saveOrUpdate((Departamento)telefono);
+	public void saveOrUpdate(Telefono telefono) {
+		sessionFactory.getCurrentSession().saveOrUpdate(telefono);
 		
 	}
 	
@@ -100,18 +88,10 @@ public class TelefonoDAO implements InterfazDAO<Telefono>{
 	 */
 	@Override
 	
-	public void delete(int id) {
+	public void delete(Telefono telefonoToDelete) {
 		
-		Telefono telefonoToDelete = new Telefono();
-		telefonoToDelete.setIdtelefono(id);
 		sessionFactory.getCurrentSession().delete(telefonoToDelete);
 		
-	}
-
-	@Override
-	public Object getSearch(String key) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 

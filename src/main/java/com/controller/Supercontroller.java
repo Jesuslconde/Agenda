@@ -59,18 +59,19 @@ public class Supercontroller {
 	@RequestMapping(value = "/viewPersona", method = RequestMethod.GET)
 	public ModelAndView verPersona(HttpServletRequest request) {
 		int id = Integer.parseInt(request.getParameter("id"));
-		Persona persona = this.personaService.get(id);
+		//Persona persona = this.personaService.get(id);
 		ModelAndView model = new ModelAndView("PersonaDetalle");
-		model.addObject("persona", persona);
+		//model.addObject("persona", persona);
 		return model;		
 	}
-	@RequestMapping(value = "/direccion", method = RequestMethod.GET)
+	@RequestMapping(value = "/persona", method = RequestMethod.GET)
 	public ModelAndView personasPorDirecciones(HttpServletRequest request) {
 		System.out.println("Pasa por controller");
 		String id = request.getParameter("key");
-		List<Telefono> tel =  telefonoService.get(id);
+		Persona per =  personaService.get(id);
+		
 		ModelAndView model = new ModelAndView("buscardireccion");
-		model.addObject("telefono", tel);
+		model.addObject("persona", per);
 		return model;		
 	}
 	

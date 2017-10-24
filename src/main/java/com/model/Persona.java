@@ -1,18 +1,20 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.transaction.annotation.Transactional;
 
 /**
 * @author Rafael Ferrer
@@ -23,9 +25,12 @@ import javax.persistence.Table;
  * @Table name asigna el nombre de la tabla "personas" a la clase Persona.
  *
  */
+
+
 @Entity
+@Transactional
 @Table(name="personas")
-public class Persona implements Serializable{
+public class Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	/**
@@ -42,12 +47,13 @@ public class Persona implements Serializable{
 	private String dni;
 	private Date fechaNacimiento;
 	
-	@OneToMany(mappedBy="telefono")
-	private List<Telefono> listTelf = new ArrayList<>();
+	//@OneToMany(mappedBy="personat")
+	//private Collection<Telefono> listTelf;
 	
-	/*@ManyToOne()
-	@JoinColumn(name="iddirecciones")
-	private Direccion direccion;*/
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="idDirecciones")
+	private Direccion dir;
+	
 	
 	/*
 	@OneToOne()
@@ -55,9 +61,17 @@ public class Persona implements Serializable{
 	private Empleado empleado;
 	*/
 	
+	@Override
+	public String toString() {
+		return "Persona [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
+				+ ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento + ", dir=" + dir + "]";
+	}
+	
+	
 	public int getId() {
 		return id;
 	}
+
 
 	public void setId(int id) {
 		this.id = id;
@@ -105,20 +119,24 @@ public class Persona implements Serializable{
 	}
 	
 
-	public List<Telefono> getListTelf() {
+	/*public Collection<Telefono> getListTelf() {
 		return listTelf;
 	}
 
-	public void setListTelf(List<Telefono> listTelf) {
+	public void setListTelf(Collection<Telefono> listTelf) {
 		this.listTelf = listTelf;
-	}
-
-	/*public List<Direcciones> getListDir() {
-		return listDir;
-	}
-
-	public void setListDir(List<Direcciones> listDir) {
-		this.listDir = listDir;
 	}*/
+
+
+	public Direccion getdir() {
+		return dir;
+	}
+
+
+	public void setdir(Direccion dir) {
+		this.dir = dir;
+	}
+
+	
 
 }

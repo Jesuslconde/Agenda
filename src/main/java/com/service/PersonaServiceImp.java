@@ -5,16 +5,22 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
-import com.dao.IPersonaDAO;
+import com.dao.InterfazDAO;
 import com.model.Persona;
 
+@Transactional
 @Service
-public class PersonaServiceImp implements IPersonaService{
+public class PersonaServiceImp implements InterfazService<Persona>{
 	
 	@Autowired
-	private IPersonaDAO personaDAO;
+	private InterfazDAO<Persona> personaDAO;
+	
+	//@Autowired
+	//@Qualifier("TelefonoDAO")
+	//private InterfazDAO<Telefono> telefonoDAO;
 	
 	@Override
 	public List<Persona> list() {
@@ -22,15 +28,16 @@ public class PersonaServiceImp implements IPersonaService{
 	}
 
 	@Override
-	public Persona get(int id) {
-		Persona persona = new Persona();
-		persona.setId(id);
-		return this.personaDAO.get(persona);
+	public Persona get(Persona id) {
+		int key = id.getId();
+		Persona per = this.personaDAO.get(key);
+		return per;
+		
 	}
 
 	@Override
-	public void saveoOrUpdate(Persona persona) {
-		this.personaDAO.saveoOrUpdate(persona);
+	public void saveOrUpdate(Persona persona) {
+		
 	}
 
 	@Override

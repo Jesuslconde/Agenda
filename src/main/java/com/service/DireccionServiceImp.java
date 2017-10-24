@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.InterfazDAO;
 import com.model.Direccion;
 
+@Transactional
 @Service
 public class DireccionServiceImp implements IDireccionService {
 
@@ -44,12 +46,6 @@ public class DireccionServiceImp implements IDireccionService {
 	public void delete(Direccion direccion) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public List<Direccion> getSearch(String key) {
-		System.out.println("Pasa por servicio");
-		return  this.direcciondao.getSearch(key);
 	}
 
 }

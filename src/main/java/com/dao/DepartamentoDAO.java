@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.model.Departamento;
 
 @Repository
-public class DepartamentoDAO implements InterfazDAO {
+public class DepartamentoDAO implements InterfazDAO<Departamento> {
 
 		@Autowired
 		private SessionFactory sessionFactory;
@@ -36,15 +36,13 @@ public class DepartamentoDAO implements InterfazDAO {
 		
 		@Override
 		@Transactional
-		public void saveOrUpdate(Object dept) {
+		public void saveOrUpdate(Departamento dept) {
 			sessionFactory.getCurrentSession().saveOrUpdate((Departamento)dept);
 		}
 		
 		@Override
 		@Transactional
-		public void delete(int id) {
-			Departamento userToDelete = new Departamento();
-			userToDelete.setId(id);
+		public void delete(Departamento userToDelete) {
 			sessionFactory.getCurrentSession().delete(userToDelete);
 		}
 		
