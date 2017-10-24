@@ -1,5 +1,7 @@
 package com.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +25,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="personas")
-public class Persona {
+public class Persona implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	/**
 	 * @param id, GeneratedValue genera automaticamente un numero para id de Persona .
@@ -39,11 +42,13 @@ public class Persona {
 	private String dni;
 	private Date fechaNacimiento;
 	
-	@OneToMany(mappedBy="telefonos")
-	private List<Telefono> listTelf;
+	@OneToMany(mappedBy="telefono")
+	private List<Telefono> listTelf = new ArrayList<>();
 	
-	@OneToMany(mappedBy="direcciones")
-	private List<Direccion> listDir;
+	/*@ManyToOne()
+	@JoinColumn(name="iddirecciones")
+	private Direccion direccion;*/
+	
 	/*
 	@OneToOne()
 	@JoinColum(name="idEmpleado", referencedColumName="idEmpleados")
@@ -99,21 +104,21 @@ public class Persona {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
-/*
-	public List<Telefonos> getListTelf() {
+
+	public List<Telefono> getListTelf() {
 		return listTelf;
 	}
 
-	public void setListTelf(List<Telefonos> listTelf) {
+	public void setListTelf(List<Telefono> listTelf) {
 		this.listTelf = listTelf;
 	}
 
-	public List<Direcciones> getListDir() {
+	/*public List<Direcciones> getListDir() {
 		return listDir;
 	}
 
 	public void setListDir(List<Direcciones> listDir) {
 		this.listDir = listDir;
-	}
-	*/
+	}*/
+
 }

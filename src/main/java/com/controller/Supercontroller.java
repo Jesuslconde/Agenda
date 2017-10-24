@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.model.Direccion;
 import com.model.Persona;
+import com.model.Telefono;
+import com.service.IDireccionService;
 import com.service.IPersonaService;
+import com.service.TelefonoServiceImp;
 
 
 
@@ -20,6 +24,12 @@ public class Supercontroller {
 	
 	@Autowired
 	private IPersonaService personaService;
+	
+	@Autowired
+	private IDireccionService direccionService;
+	
+	@Autowired
+	private TelefonoServiceImp telefonoService;
 	
 	@RequestMapping("/")
 	public ModelAndView inicio() throws Exception{
@@ -52,6 +62,15 @@ public class Supercontroller {
 		Persona persona = this.personaService.get(id);
 		ModelAndView model = new ModelAndView("PersonaDetalle");
 		model.addObject("persona", persona);
+		return model;		
+	}
+	@RequestMapping(value = "/direccion", method = RequestMethod.GET)
+	public ModelAndView personasPorDirecciones(HttpServletRequest request) {
+		System.out.println("Pasa por controller");
+		String id = request.getParameter("key");
+		List<Telefono> tel =  telefonoService.get(id);
+		ModelAndView model = new ModelAndView("buscardireccion");
+		model.addObject("telefono", tel);
 		return model;		
 	}
 	

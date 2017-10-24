@@ -9,14 +9,18 @@
 <title>Personas Detalle</title>
 </head>
 <body>
-	<h1>Persona Detalle</h1>
-	<h2>${persona.nombre} ${persona.apellido1} ${persona.apellido2}</h2>
+	<h1>Persona Direccion</h1>
+	<c:forEach items="${direccion}" var="dir">
+		
+		<h2>${dir.direccion},${dir.localidad},${dir.provincia}</h2>
+	 </c:forEach>
+	 
+	 <c:forEach items="${telefono}" var="tel">
+		
+		<h2>${tel.telefono} ${ tel.persona }</h2>
+		
+	 </c:forEach>
 	<ul>
-		<li>DNI: ${persona.dni}</li>
-		<li>Fecha Nacimiento: <fmt:formatDate pattern = "dd-MM-yyyy" value = "${persona.fechaNacimiento}" /></li>
-		<li><a href="edit?id=${persona.id}">+ Modificar</a> | <a href="delete?id=${persona.id}">- Eliminar</a></li>
-		
-		
 	</ul>
 </body>
 </html>

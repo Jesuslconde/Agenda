@@ -10,5 +10,7 @@
 	<h1>Opciones Agenda</h1>
 	<a href="newPersona">+ Nueva Persona Form</a><br>
 	<a href="listPersona">+ Persona List</a>
+	
+	<li><a href="direccion?key=1">+ Modificar</a></li>
 </body>
 </html>

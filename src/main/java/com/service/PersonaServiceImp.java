@@ -11,7 +11,6 @@ import com.dao.IPersonaDAO;
 import com.model.Persona;
 
 @Service
-@Transactional
 public class PersonaServiceImp implements IPersonaService{
 	
 	@Autowired

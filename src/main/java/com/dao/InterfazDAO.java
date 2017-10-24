@@ -12,5 +12,7 @@ public interface InterfazDAO<T> {
 	public <T> void saveOrUpdate(T obj);
 	
 	public void delete(int id);
+	
+	public <T> T getSearch(String key);
 
 }

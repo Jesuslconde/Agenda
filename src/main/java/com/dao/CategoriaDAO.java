@@ -12,6 +12,7 @@ import com.model.Categoria;
 import com.model.Departamento;
 
 @Repository
+@Transactional
 public class CategoriaDAO implements InterfazDAO {
 	
 	@Autowired
@@ -26,7 +27,7 @@ public class CategoriaDAO implements InterfazDAO {
 	}
 	
 	@Override
-	@Transactional
+	
 	public List<Categoria> list() {
 		@SuppressWarnings("unchecked")
 		List<Categoria> listUser = (List<Categoria>) sessionFactory.getCurrentSession()
@@ -37,13 +38,13 @@ public class CategoriaDAO implements InterfazDAO {
 	}
 	
 	@Override
-	@Transactional
+	
 	public void saveOrUpdate(Object cat) {
 		sessionFactory.getCurrentSession().saveOrUpdate((Categoria)cat);
 	}
 	
 	@Override
-	@Transactional
+	
 	public void delete(int id) {
 		Categoria catToDelete = new Categoria();
 		catToDelete.setId(id);
@@ -51,7 +52,7 @@ public class CategoriaDAO implements InterfazDAO {
 	}
 	
 	@Override
-	@Transactional
+	
 	public Categoria get(int id) {
 		return (Categoria) sessionFactory.getCurrentSession().get(Categoria.class,id);
 		

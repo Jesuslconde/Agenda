@@ -5,11 +5,13 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.model.Departamento;
+import com.model.Direccion;
 import com.model.Telefono;
 
 /**
@@ -18,7 +20,8 @@ import com.model.Telefono;
 
 
 @Repository
-public class TelefonoDAO implements InterfazDAO{
+@Transactional
+public class TelefonoDAO implements InterfazDAO<Telefono>{
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -41,7 +44,7 @@ public class TelefonoDAO implements InterfazDAO{
 	 * @return     El Objeto Lista de telefonos.
 	 */
 	@Override
-	@Transactional
+	
 	public List<Telefono> list() {
 		@SuppressWarnings("unchecked")
 		List<Telefono> listTelefono = (List<Telefono>) sessionFactory.getCurrentSession()
@@ -52,16 +55,26 @@ public class TelefonoDAO implements InterfazDAO{
 	}
 	
 	/**
-	 * Recupera un telefono coincidiente con la id 
+	 * Recupera un telefono coincidiente con la id de la persona dueña
 	 * 
 	 *
 	 * @param		id del registro a obtener
+	 * @return 
 	 * @return		La lista de Objetos telefonos
 	 */
 	@Override
-	@Transactional
-	public Telefono get(int id) {
-		return (Telefono) sessionFactory.getCurrentSession().get(Telefono.class, id);
+	
+	public List<Telefono> get(int key) {
+		
+		
+		String hql = "from Telefono where persona = " + key;
+		String hq = "FROM Telefono t, Persona p where t.persona=p.id and p.id=" + key;
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		System.out.println(query.list().toString());
+		List<Telefono> telefono = query.list();
+		
+		return telefono;
 		
 	}
 	
@@ -73,7 +86,7 @@ public class TelefonoDAO implements InterfazDAO{
 	 * @return		Lista de Objetos telefonos
 	 */
 	@Override
-	@Transactional
+	
 	public void saveOrUpdate(Object telefono) {
 		sessionFactory.getCurrentSession().saveOrUpdate((Departamento)telefono);
 		
@@ -86,13 +99,19 @@ public class TelefonoDAO implements InterfazDAO{
 	 * @param     id del registro a borrar
 	 */
 	@Override
-	@Transactional
+	
 	public void delete(int id) {
 		
 		Telefono telefonoToDelete = new Telefono();
 		telefonoToDelete.setIdtelefono(id);
 		sessionFactory.getCurrentSession().delete(telefonoToDelete);
 		
+	}
+
+	@Override
+	public Object getSearch(String key) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

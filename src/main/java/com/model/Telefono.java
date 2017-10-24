@@ -1,7 +1,10 @@
 package com.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,7 +14,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="telefonos")
-public class Telefono {
+public class Telefono implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idtelefonos")
@@ -19,8 +24,8 @@ public class Telefono {
 	@Column(name="telefono")
 	private String telefono;
 	
-	@ManyToOne()
-	@JoinColumn(name="idpersonas")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="idPersona")
 	private Persona persona;
 	
 	
@@ -42,10 +47,11 @@ public class Telefono {
 	public Telefono(){
 		
 	}
-	public Telefono(int idtelefono, String telefono) {
+	public Telefono(int idtelefono, String telefono, Persona persona) {
 		super();
 		this.idtelefono = idtelefono;
 		this.telefono = telefono;
+		this.persona = persona;
 	}
 	
 	//ToString
@@ -78,6 +84,12 @@ public class Telefono {
 		return true;
 	}
 	
+	public Persona getpersona(){
+		return persona;
+	}
+	public void setpersona(Persona persona){
+		this.persona=persona;
+	}
 	
 	
 	

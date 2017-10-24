@@ -1,20 +1,27 @@
 package com.model;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 @Table(name="direcciones")
-public class Direccion {
+public class Direccion implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +35,9 @@ public class Direccion {
 	private String localidad;
 	@Column(name="provincia")
 	private String provincia;
-	@OneToMany()
-	@JoinColumn(name = "idpersonas")
-    private Set<Persona> persona;
+	
+	//@OneToMany(mappedBy = "id")
+    //private List<Persona> persona;
 	
 	//Getters and setters
 	public int getIddireccion() {
