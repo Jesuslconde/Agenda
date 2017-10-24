@@ -3,7 +3,11 @@ package com.model;
 import java.io.Serializable;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,6 +46,9 @@ public class Direccion implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idPersona")
     private Persona persona;
+	
+	//@OneToMany(mappedBy = "id")
+    //private List<Persona> persona;
 	
 	//Getters and setters
 	public int getIddireccion() {

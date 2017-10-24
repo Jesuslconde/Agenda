@@ -31,11 +31,8 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="personas")
 public class Persona implements Serializable{
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * @param id, GeneratedValue genera automaticamente un numero para id de Persona .
 	 * @param id, Colum(name) asigna la columna "idpersonas" en la BD al id de Persona.
@@ -56,6 +53,14 @@ public class Persona implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idpersona")
 	private List<Direccion> listDir = new ArrayList<>();
+
+	@OneToMany(mappedBy="telefono")
+	private List<Telefono> listTelf = new ArrayList<>();
+	
+	/*@ManyToOne()
+	@JoinColumn(name="iddirecciones")
+	private Direccion direccion;*/
+
 	/*
 	@OneToOne()
 	@JoinColumn(name="idEmpleado", referencedColumnName="idEmpleados")
@@ -111,22 +116,29 @@ public class Persona implements Serializable{
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
-	//@OneToMany(targetEntity=Telefono.class, mappedBy="telefonos")
 	public List<Telefono> getListTelf() {
 		return listTelf;
 	}
-	
 	public void setListTelf(List<Telefono> listTelf) {
 		this.listTelf = listTelf;
 	}
+
 	
 	//@OneToMany(targetEntity=Direccion.class, mappedBy="direcciones")
 	public List<Direccion> getListDir() {
+
+
+	/*public List<Direcciones> getListDir() {
+
 		return listDir;
 	}
 
 	public void setListDir(List<Direccion> listDir) {
 		this.listDir = listDir;
+
 	}
+
+	}*/
+
 
 }

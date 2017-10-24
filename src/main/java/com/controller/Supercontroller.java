@@ -31,6 +31,13 @@ public class Supercontroller {
 	private CategoriaService catService;
 	*/
 
+
+	@Autowired
+	private IDireccionService direccionService;
+	
+	@Autowired
+	private TelefonoServiceImp telefonoService;
+	
 	@RequestMapping("/")
 	public ModelAndView inicio() throws Exception{
 		ModelAndView model = new ModelAndView("inicio");

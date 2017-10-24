@@ -4,16 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Agenda</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<h1>Opciones Agenda</h1>
-<<<<<<< HEAD
 	<a href="newPersona">+ Nueva Persona Form</a><br>
 	<a href="listPersona">+ Persona List</a>
-=======
-	<a href="newEmpleado">+ Nuevo Empleado Form</a><br>
-	<a href="listEmpleado">+ Empleado List</a>
->>>>>>> branch 'Empleado' of https://github.com/Jesuslconde/Agenda.git
+	<li><a href="direccion?key=1">+ Modificar</a></li>
 </body>
 </html>

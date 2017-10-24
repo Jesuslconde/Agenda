@@ -1,5 +1,7 @@
 package com.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +15,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="telefonos")
-public class Telefono {
+public class Telefono implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idtelefonos")
@@ -87,4 +91,10 @@ public class Telefono {
 		return true;
 	}
 	
+	public Persona getpersona(){
+		return persona;
+	}
+	public void setpersona(Persona persona){
+		this.persona=persona;
+	}
 }

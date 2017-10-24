@@ -25,6 +25,8 @@
 			</ul>
 		</c:forEach>
 		<li><a href="edit?id=${persona.id}">+ Modificar</a> | <a href="delete?id=${persona.id}">- Eliminar</a></li>
+		
+		
 	</ul>
 </body>
 </html>

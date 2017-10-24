@@ -35,9 +35,9 @@ public class Departamento {
 	@Column(name = "nombre")
 	private String nombre;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	/*@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idempleados")
-	private Set<Empleado> empleados;
+	//private Set<Empleado> empleados;*/
 	
 		/** 
 	    * Constructor de clase vacío.
@@ -49,11 +49,11 @@ public class Departamento {
 		/** 
 	    * Constructor de clase con todos los parámetros.
 	    */
-		public Departamento(Integer id, String nombre, Set<Empleado> empleados) {
+		/*public Departamento(Integer id, String nombre, Set<Empleado> empleados) {
 			this.id = id;
 			this.nombre = nombre;
 			this.empleados = empleados;
-		}
+		}*/
 
 		public Integer getId() {
 			return id;
@@ -70,13 +70,13 @@ public class Departamento {
 			this.nombre = nombre;
 		}
 
-		public Set<Empleado> getEmpleados() {
+		/*public Set<Empleado> getEmpleados() {
 			return empleados;
 		}
 
 		public void setEmpleados(Set<Empleado> empleados) {
 			this.empleados = empleados;
-		}
+		}*/
 
 		@Override
 		public int hashCode() {

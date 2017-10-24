@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.model.Categoria;
 
 @Repository
+@Transactional
 public class CategoriaDAO implements InterfazDAO<Categoria> {
 	
 	@Autowired
@@ -25,7 +26,7 @@ public class CategoriaDAO implements InterfazDAO<Categoria> {
 	}
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
+	
 	public List<Categoria> list() {
 		
 		List<Categoria> listUser = (List<Categoria>) sessionFactory.getCurrentSession()
@@ -36,13 +37,13 @@ public class CategoriaDAO implements InterfazDAO<Categoria> {
 	}
 	
 	@Override
-	@Transactional
+	
 	public void saveOrUpdate(Categoria cat) {
 		sessionFactory.getCurrentSession().saveOrUpdate((Categoria)cat);
 	}
 	
 	@Override
-	@Transactional
+	
 	public void delete(int id) {
 		Categoria catToDelete = new Categoria();
 		catToDelete.setId(id);
@@ -50,7 +51,7 @@ public class CategoriaDAO implements InterfazDAO<Categoria> {
 	}
 	
 	@Override
-	@Transactional
+	
 	public Categoria get(int id) {
 		return (Categoria) sessionFactory.getCurrentSession().get(Categoria.class,id);
 		
