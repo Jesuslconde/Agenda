@@ -10,6 +10,6 @@
 	<h1>Opciones Agenda</h1>
 	<a href="newEmpleado">+ Nuevo Empleado Form</a><br>
 	<a href="listEmpleado">+ Empleado List</a>
-	<a href="viewEmpleado">+ Buscar Empleado </a>
+	
 </body>
 </html>
