@@ -5,7 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.dao.InterfazDAO;
@@ -16,7 +16,8 @@ import com.model.Persona;
 public class PersonaServiceImp implements InterfazService<Persona>{
 	
 	@Autowired
-	private InterfazDAO<Persona> personaDAO;
+	@Qualifier("personaDAO")
+	private InterfazDAO<Persona> perDAO;
 	
 	//@Autowired
 	//@Qualifier("TelefonoDAO")
@@ -24,13 +25,14 @@ public class PersonaServiceImp implements InterfazService<Persona>{
 	
 	@Override
 	public List<Persona> list() {
-		return this.personaDAO.list();
+		System.out.println("Entra en servicio");
+		return this.perDAO.list();
 	}
 
 	@Override
 	public Persona get(Persona id) {
 		int key = id.getId();
-		Persona per = this.personaDAO.get(key);
+		Persona per = this.perDAO.get(key);
 		return per;
 		
 	}
@@ -42,7 +44,7 @@ public class PersonaServiceImp implements InterfazService<Persona>{
 
 	@Override
 	public void delete(Persona persona) {
-		this.personaDAO.delete(persona);
+		this.perDAO.delete(persona);
 	}
 
 }

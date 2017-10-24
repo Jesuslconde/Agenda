@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.model.Departamento;
 
 @Repository
+@Transactional
 public class DepartamentoDAO implements InterfazDAO<Departamento> {
 
 		@Autowired

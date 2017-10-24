@@ -20,8 +20,10 @@ public class PersonaDAO implements InterfazDAO<Persona>{
 	
 	@Override
 	public List<Persona> list() {
+		System.out.println("Entra en Persona dao");
 		@SuppressWarnings("unchecked")
 		List<Persona> listPersonas = (List<Persona>)sessionFactory.getCurrentSession().createCriteria(Persona.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+		
 		return listPersonas;
 	}
 

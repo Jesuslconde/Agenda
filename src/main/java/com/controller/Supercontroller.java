@@ -14,7 +14,7 @@ import com.model.Direccion;
 import com.model.Persona;
 import com.model.Telefono;
 import com.service.IDireccionService;
-import com.service.IPersonaService;
+import com.service.InterfazService;
 import com.service.TelefonoServiceImp;
 
 
@@ -23,19 +23,14 @@ import com.service.TelefonoServiceImp;
 public class Supercontroller {
 	
 	@Autowired
-	private IPersonaService personaService;
-	
-	@Autowired
-	private IDireccionService direccionService;
-	
-	@Autowired
-	private TelefonoServiceImp telefonoService;
+	private InterfazService<Persona> personaService;
+
 	
 	@RequestMapping("/")
 	public ModelAndView inicio() throws Exception{
-
+		List<Persona> per =  personaService.list();
 		ModelAndView model = new ModelAndView("inicio");
-		
+		model.addObject("personas", per);
 		return model;
 	}
 	
@@ -46,32 +41,12 @@ public class Supercontroller {
 		return model;		
 	}
 	
-	@RequestMapping(value = "/listPersona", method = RequestMethod.GET)
-	public ModelAndView listPersona() {
-		List<Persona> listPersonas = this.personaService.list();
-		for(Persona persona : listPersonas)
-			System.out.println("-- "+persona.getNombre());
-		ModelAndView model = new ModelAndView("PersonaList");
-		model.addObject("listPersonas", listPersonas);
-		return model;		
-	}
-	
 	@RequestMapping(value = "/viewPersona", method = RequestMethod.GET)
 	public ModelAndView verPersona(HttpServletRequest request) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		//Persona persona = this.personaService.get(id);
 		ModelAndView model = new ModelAndView("PersonaDetalle");
 		//model.addObject("persona", persona);
-		return model;		
-	}
-	@RequestMapping(value = "/persona", method = RequestMethod.GET)
-	public ModelAndView personasPorDirecciones(HttpServletRequest request) {
-		System.out.println("Pasa por controller");
-		String id = request.getParameter("key");
-		Persona per =  personaService.get(id);
-		
-		ModelAndView model = new ModelAndView("buscardireccion");
-		model.addObject("persona", per);
 		return model;		
 	}
 	
