@@ -1,6 +1,7 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,15 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.model.Persona;
+
+/**
+ * Esta clase define la clase Empleado, el cuál tendrá los atributos principales 
+ * de un empleado, que esta relacionado con la clase Persona 
+ * @author: Alvaro Calixto Roca
+ * @version: 23/10/2017/A
+ 
+ */ 
+
 
 @Entity
 @Table(name = "empleados")
@@ -24,7 +34,7 @@ public class Empleado implements Serializable{
 	private int id;
 	private String codEmpleado;
 	private int salario;
-	private String fechaAlta;
+	private Date fechaAlta;
 	private int idDepartamento;
 	private int idCategoria;
 	
@@ -53,10 +63,10 @@ public class Empleado implements Serializable{
 	public void setSalario(int salario) {
 		this.salario = salario;
 	}
-	public String getFechaAlta() {
+	public Date getFechaAlta() {
 		return fechaAlta;
 	}
-	public void setFechaAlta(String fechaAlta) {
+	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
 	

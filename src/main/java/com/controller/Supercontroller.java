@@ -1,8 +1,6 @@
 package com.controller;
 
 
-
-
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,8 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.model.Empleado;
 import com.service.EmpleadoService;
-
-
 
 
 @Controller
@@ -44,12 +40,21 @@ public class Supercontroller {
 	@RequestMapping(value = "/listEmpleado", method = RequestMethod.GET)
 	public ModelAndView listEmpleado() {
 		List<Empleado> listEmpleados = this.empleadoService.list();
+		
 		for(Empleado empleado : listEmpleados)
 			System.out.println("-- "+empleado.getCodEmpleado());
 		ModelAndView model = new ModelAndView("EmpleadoList");//Nombre del formulario
+		
 		model.addObject("listEmpleados", listEmpleados);
+		System.out.println("-- "+listEmpleados.get(0));
+		System.out.println("-- "+listEmpleados.get(1));
+		
+		
 		return model;		
 	}
+	
+	
+	
 	
 	@RequestMapping(value = "/viewEmpleado", method = RequestMethod.GET)
 	public ModelAndView verEmpleado(HttpServletRequest request) {
@@ -57,6 +62,14 @@ public class Supercontroller {
 		Empleado empleado = this.empleadoService.get(id);
 		ModelAndView model = new ModelAndView("EmpleadoDetalle");
 		model.addObject("empleado", empleado);
+		
 		return model;		
 	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ModelAndView saveEmpleado(@ModelAttribute Empleado empleado) {
+		empleadoService.saveOrUpdate(empleado);
+		return new ModelAndView("redirect:/");
+	}
+		
 }

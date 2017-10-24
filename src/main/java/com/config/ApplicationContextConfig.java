@@ -53,7 +53,6 @@ public class ApplicationContextConfig {
     	Properties properties = new Properties();
     	properties.put("hibernate.show_sql", "true");
     	properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-    	System.out.println("Prueba2");
     	return properties;
     	
     }
@@ -64,7 +63,6 @@ public class ApplicationContextConfig {
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(getHibernateProperties());
     	sessionBuilder.addAnnotatedClasses(Empleado.class);
-    	System.out.println("Prueba3");
     	return sessionBuilder.buildSessionFactory();
     }
     
@@ -74,7 +72,6 @@ public class ApplicationContextConfig {
 			SessionFactory sessionFactory) {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager(
 				sessionFactory);
-		System.out.println("Prueba4");
 		return transactionManager;
 	}
     

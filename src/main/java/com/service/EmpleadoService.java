@@ -6,7 +6,7 @@ import com.model.Empleado;
 
 public interface EmpleadoService {
 
-public List<Empleado> list();
+	public List<Empleado> list();
 	
 	public Empleado get(int id);
 	
