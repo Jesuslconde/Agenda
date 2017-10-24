@@ -27,12 +27,12 @@ public class CategoriaService implements InterfazService<Categoria>{
 	
 	
 	public CategoriaService(){
-		System.out.println("constructor categoriaDAO");
+		System.out.println("constructor categoriaService");
 	}
 	
 	public CategoriaService(InterfazDAO<Categoria> catDAO) {
 		this.catDAO = catDAO;
-		System.out.println("-constructor categoriaDAO");
+		System.out.println("--constructor categoriaService");
 	}
 	
 	public InterfazDAO<Categoria> getCatDAO() {
@@ -42,14 +42,16 @@ public class CategoriaService implements InterfazService<Categoria>{
 	public void setCatDAO(InterfazDAO<Categoria> catDAO) {
 		this.catDAO = catDAO;
 	}
-	@Override
-	public Categoria buscaPorEmpleados(int id){
-		return this.catDAO.buscaPorEmpleados(id);
+	
+
+	public InterfazDAO<Empleado> getEmpDAO() {
+		return empDAO;
 	}
-	@Override
-	public List<Empleado> buscaListado(int id){
-		return empDAO.buscaListadoCat(id);
+
+	public void setEmpDAO(InterfazDAO<Empleado> empDAO) {
+		this.empDAO = empDAO;
 	}
+
 	@Override
 	public List<Categoria> list() {
 		System.out.println("--CategoriaService.list");
@@ -64,12 +66,15 @@ public class CategoriaService implements InterfazService<Categoria>{
 	@Override
 	public void saveOrUpdate(Categoria t) {
 		catDAO.saveOrUpdate(t);
-
 	}
-
+	
 	@Override
 	public void delete(int id) {
-	catDAO.delete(id);
-
+		catDAO.delete(id);
+	}
+	
+	@Override
+	public List<Empleado> buscaListado(Categoria cat){
+		return catDAO.buscaListado(cat);
 	}
 }

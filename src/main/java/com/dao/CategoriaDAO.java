@@ -68,9 +68,7 @@ public class CategoriaDAO implements InterfazDAO<Categoria> {
 		return empleado.getCategoria();
 	}
 	@Override
-	public List<Empleado> buscaListadoCat(int id){
-		Categoria cat = new Categoria();
-		cat.setId(id);
+	public List<Empleado> buscaListado(Categoria cat){
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(Empleado.class);
 		crit.add(Restrictions.eq("cat",cat));
 		return crit.list();

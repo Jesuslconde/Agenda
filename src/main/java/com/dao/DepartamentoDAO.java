@@ -32,7 +32,7 @@ public class DepartamentoDAO implements InterfazDAO<Departamento> {
 			Criteria crit = sessionFactory.getCurrentSession().createCriteria(Empleado.class);
 			crit.add(Restrictions.eq("id",id));
 			Empleado empleado = (Empleado) crit.uniqueResult();
-			return empleado.getIdDepartamento();
+			return empleado.getDepartamento();
 		}
 		@SuppressWarnings("unchecked")
 		@Override
@@ -66,9 +66,10 @@ public class DepartamentoDAO implements InterfazDAO<Departamento> {
 		}
 
 		@Override
-		public List<Empleado> buscaListadoCat(int id) {
-			// TODO Auto-generated method stub
-			return null;
+		public List<Empleado> buscaListado(Departamento depart) {
+			Criteria crit = sessionFactory.getCurrentSession().createCriteria(Empleado.class);
+			crit.add(Restrictions.eq("depart",depart));
+			return crit.list();
 		}
 
 

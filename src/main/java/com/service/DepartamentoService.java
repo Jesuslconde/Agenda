@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import com.dao.InterfazDAO;
+import com.model.Categoria;
 import com.model.Departamento;
 import com.model.Empleado;
 
@@ -18,28 +19,16 @@ public class DepartamentoService implements InterfazService<Departamento>{
 	@Qualifier("departamentoDAO")
 	private InterfazDAO<Departamento> deptDAO;
 	
+	@Autowired
+	@Qualifier("empleadoDAO")
+	private InterfazDAO<Empleado> empDAO;
+	
+	
+	
 	public DepartamentoService() {
 	}
 	public DepartamentoService(InterfazDAO<Departamento> deptDAO) {
 		this.deptDAO = deptDAO;
-	}
-
-	/*
-	public UserServiceImpl(){
-		
-	}
-	
-	public UserServiceImpl(UserDAO userDAO) {
-		super();
-		this.userDAO = userDAO;
-	}
-	*/
-	
-
-	@Override
-	public List<Departamento> list() {
-
-		return deptDAO.list();
 	}
 
 	public InterfazDAO<Departamento> getDeptDAO() {
@@ -49,10 +38,16 @@ public class DepartamentoService implements InterfazService<Departamento>{
 	public void setDeptDAO(InterfazDAO<Departamento> deptDAO) {
 		this.deptDAO = deptDAO;
 	}
+	
+	@Override
+	public List<Departamento> list() {
+
+		return deptDAO.list();
+	}
 
 	@Override
 	public Departamento get(int id) {
-		return (Departamento)deptDAO.get(id);
+		return deptDAO.get(id);
 	}
 
 	@Override
@@ -67,12 +62,8 @@ public class DepartamentoService implements InterfazService<Departamento>{
 
 	}
 	
-	public Departamento buscaPorEmpleados(int id) {
-		return null;
-	}
 	@Override
-	public List<Empleado> buscaListado(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Empleado> buscaListado(Departamento dept) {
+		return deptDAO.buscaListado(dept);
 	}
 }

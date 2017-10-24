@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ import com.service.InterfazService;
 public class Supercontroller {
 	
 	@Autowired
-	private InterfazService<Categoria> catService;
+	private InterfazService<Empleado> empleadoService;
 	
 	/*
 	@Autowired
@@ -49,29 +50,32 @@ public class Supercontroller {
 	@RequestMapping(value = "/aaa", method = RequestMethod.GET)
 	public ModelAndView newEmpID() {
 		ModelAndView model = new ModelAndView("CategoriaList");
-		Categoria cat =this.catService.buscaPorEmpleados(1);
-		System.out.println(cat.getNombre());
-		model.addObject("cat", cat);
+	
+		
 		return model;		
 	}
 	@RequestMapping(value = "/ListadoEmp", method = RequestMethod.GET)
 	public ModelAndView newListaCatEmpID() {
 		ModelAndView model = new ModelAndView("CategoriaList");
-		List<Empleado> empleados =this.catService.buscaListado(1);
+		Categoria cat = new Categoria();
+		cat.setId(1);
+		List<Empleado> empleados =this.empleadoService.list();
 		for(int i=0;i<empleados.size();i++){
 			System.out.println(empleados.get(i).getCategoria().getNombre());
-			System.out.println(empleados.get(i).getIdDepartamento().getNombre());
+			System.out.println(empleados.get(i).getDepartamento().getNombre());
 			System.out.println(empleados.get(i).getCodEmpleado());
 		}
 		model.addObject("categoria", empleados);
 		return model;		
 	}
-	@RequestMapping(value = "/listCat", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView newLista() {
 		ModelAndView model = new ModelAndView("CategoriaList");
-		List<Categoria> listCat =this.catService.list();
+		List<Empleado> listCat =this.empleadoService.list();
 		for(int i=0;i<listCat.size();i++){
-			System.out.println(listCat.get(i).getNombre());
+			System.out.println(listCat.get(i).getCodEmpleado());
+			System.out.println(listCat.get(i).getCategoria());
+			System.out.println(listCat.get(i).getDepartamento());
 		}
 		model.addObject("lista", listCat);
 		return model;		

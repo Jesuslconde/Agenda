@@ -11,6 +11,6 @@
 	<a href="newCategoria">+ Nueva Persona Form</a><br>
 	<a href="aaa">+ Categoria/EmpleadoID List</a>
 	<a href="ListadoEmp">+ ListadoEmp por Cat</a><br>
-	<a href="listCat">+ Categoria List</a>
+	<a href="list">+ List</a>
 </body>
 </html>

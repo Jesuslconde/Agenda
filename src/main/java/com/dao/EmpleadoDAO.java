@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.model.Categoria;
+import com.model.Departamento;
 import com.model.Empleado;
 
 @Repository
@@ -63,11 +64,10 @@ public class EmpleadoDAO implements InterfazDAO<Empleado>{
 		return this.get(id);
 	}
 	@Override
-	public List<Empleado> buscaListadoCat(int id){
-		Categoria cat = new Categoria();
-		cat.setId(id);
+	public List<Empleado> buscaListado(Empleado empleado){
+		
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(Empleado.class);
-		crit.add(Restrictions.eq("cat",cat));
+		crit.add(Restrictions.eq("this", empleado));
 		return crit.list();
 	}
 }

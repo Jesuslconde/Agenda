@@ -67,16 +67,16 @@ public class Empleado implements Serializable{
 		this.fechaAlta = fechaAlta;
 	}
 	
-	public Departamento getIdDepartamento() {
+	public Departamento getDepartamento() {
 		return depart;
 	}
-	public void setIdDepartamento(Departamento departamento) {
+	public void setDepartamento(Departamento departamento) {
 		this.depart = departamento;
 	}
 	public Categoria getCategoria() {
 		return cat;
 	}
-	public void setIdCategoria(Categoria categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.cat = categoria;
 	}
 	/*

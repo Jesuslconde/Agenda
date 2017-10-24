@@ -17,6 +17,6 @@ public interface InterfazDAO<T> {
 
 	public T buscaPorEmpleados(int id);
 	
-	public List<Empleado> buscaListadoCat(int id);
+	public List<Empleado> buscaListado(T obj);
 
 }
