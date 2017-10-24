@@ -15,7 +15,11 @@
 		<li>DNI: ${persona.dni}</li>
 		<li>Fecha Nacimiento: <fmt:formatDate pattern = "dd-MM-yyyy" value = "${persona.fechaNacimiento}" /></li>
 		<li><a href="edit?id=${persona.id}">+ Modificar</a> | <a href="delete?id=${persona.id}">- Eliminar</a></li>
-		
+		<ul>
+			<c:forEach var="telef" items="${persona.listTelf}" varStatus="status">
+			<li>${telef.telefono}</li>
+			</c:forEach>
+		</ul>
 		
 	</ul>
 </body>

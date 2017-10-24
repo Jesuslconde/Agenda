@@ -57,4 +57,10 @@ public class CategoriaDAO implements InterfazDAO {
 		return (Categoria) sessionFactory.getCurrentSession().get(Categoria.class,id);
 		
 	}
+
+	@Override
+	public Object getSearch(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

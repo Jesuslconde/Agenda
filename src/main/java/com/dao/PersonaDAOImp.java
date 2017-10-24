@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -30,10 +32,35 @@ public class PersonaDAOImp implements IPersonaDAO{
 	@Override
 	@Transactional
 	public Persona get(Persona persona) {
-		Session session = sessionFactory.openSession();
+		//Session session = sessionFactory.openSession();
+		String hql = "select p from personas as p left join p.listTelef as t where t.idpersona =" + persona.getId();
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		Persona person = (Persona)query.uniqueResult();
+		
+		
+		/*
+		Criteria criteria = session.createCriteria(Persona.class);
+		criteria.createAlias("persona,listTelef", "telefono");
+		criteria.setFetchMode("telefono.idpersona", FetchMode.JOIN);
+		criteria.add(Restrictions.eq("id", persona.getId()));
+
+		// this tells Hibernate that the makes must be fetched from the database
+		// you must use the name of the annotated field in the Java class: dealerMakes
+		
+		// Hibernate will return instances of Dealer, but it will return the same instance several times
+		// once per make the dealer has. To avoid this, you must use a distinct root entity transformer
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		//List<Persona> listPersonas = criteria.list(); // executes the SQL query:
+		// select d.*, m.* from dealer d left join make m on d.dealer_id = m.dealer_id where d.dealer_id > 6
+		Persona person = (Persona)criteria.uniqueResult();
+		System.out.println(persona.getListTelf().size());
+		/*
 		Criteria criteria =  session.createCriteria(Persona.class).add(Restrictions.eq("id", persona.getId()));// id : nombre de clase Persona -> id (En model)
 		Persona person = (Persona)criteria.uniqueResult();
 		session.close();
+		*/
 		return person;
 	}
 

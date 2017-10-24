@@ -90,7 +90,5 @@ public class Telefono implements Serializable{
 	public void setpersona(Persona persona){
 		this.persona=persona;
 	}
-	
-	
-	
+
 }

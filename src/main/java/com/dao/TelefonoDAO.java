@@ -66,10 +66,9 @@ public class TelefonoDAO implements InterfazDAO<Telefono>{
 	
 	public List<Telefono> get(int key) {
 		
-		
 		String hql = "from Telefono where persona = " + key;
-		String hq = "FROM Telefono t, Persona p where t.persona=p.id and p.id=" + key;
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		String hq = "FROM Telefonos t, Personas p where t.persona=p.id and p.id=" + key;
+		Query query = sessionFactory.getCurrentSession().createQuery(hq);
 		
 		System.out.println(query.list().toString());
 		List<Telefono> telefono = query.list();
