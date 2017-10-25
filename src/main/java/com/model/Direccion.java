@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.CascadeType;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,7 +33,7 @@ public class Direccion implements Serializable {
 	@Column(name="provincia")
 	private String provincia;
 	
-	@OneToMany(mappedBy="dir")
+	@OneToMany(mappedBy="dir",cascade=CascadeType.ALL)
     private Collection<Persona> personad;
 	
 	//Getters and setters
@@ -47,13 +48,16 @@ public class Direccion implements Serializable {
 	}
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}
-	public String getCodPostal() {
+	}	
+	
+	public String getCodpostal() {
 		return codpostal;
 	}
-	public void setCodPostal(String codpostal) {
+	public void setCodpostal(String codpostal) {
 		this.codpostal = codpostal;
 	}
+
+
 	public String getLocalidad() {
 		return localidad;
 	}

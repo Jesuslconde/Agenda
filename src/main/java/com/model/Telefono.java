@@ -40,13 +40,13 @@ public class Telefono implements Serializable{
 	public void setIdtelefono(int idtelefonos) {
 		this.idtelefono = idtelefonos;
 	}
+	
 	public String getTelefono() {
 		return telefono;
 	}
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
 	//Constructores
 	public Telefono(){
 		

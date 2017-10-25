@@ -37,7 +37,7 @@ public class TelefonoServiceImp implements InterfazService<Telefono>{
 	}
 	@Override
 	public void saveOrUpdate(Telefono obj) {
-		// TODO Auto-generated method stub
+		telDAO.saveOrUpdate(obj);
 		
 	}
 	@Override

@@ -9,25 +9,41 @@
 <title>Agenda</title>
 </head>
 <body>
-	<h1>Opciones Agenda</h1>
+	<h1>Opciones Agenda <a href="add"> AÑADIR </a></h1>
+	
+	<table>
 	<c:forEach items="${personas}" var="per">
 		
-		<h2>${per.nombre}${per.apellido1}${per.apellido2}</h2>
-		
+		<tr>
+			<td><h2>${per.nombre}${per.apellido1}${per.apellido2} </h2></td>
+			<tr>
+				<td>DNI</td>
+				<td>${per.dni}</td>
+				<td>FEcha nac</td>
+				<td>${per.fechaNacimiento}</td>
+			</tr>
+		</tr>
+		<tr>
+		<td>telefono</td>
 		<c:forEach items="${per.listTelf}" var="pertel">
-			<h2>${pertel.telefono}</h2>
+			<td>${pertel.telefono}</td>
 		</c:forEach>
-		<h2>${per.dir.direccion}</h2>
-		<h2>${per.dir.codPostal}</h2>
-		<h2>${per.dir.localidad}</h2>
-		<h2>${per.dir.provincia}</h2>
-		<h2>${per.emple.getCategoria().nombre}</h2>
-		<h2>${per.emple.getDepartamento().nombre}</h2>
-		<h2>${per.emple.fechaAlta}</h2>
-		<h2>${per.emple.salario}</h2>
-		
+		</tr>
+		<!--  <tr>
+			<td>${per.dir.direccion}</td>
+			<td>${per.dir.codpostal}</td>
+			<td>${per.dir.localidad}</td>
+			<td>${per.dir.provincia}</td>
+		</tr>
+		<tr>
+			<td>${per.emple.getCategoria().nombre}</td>
+			<td>${per.emple.getDepartamento().nombre}</td>
+			<td>${per.emple.fechaAlta}</td>
+			<td>${per.emple.salario}</td>
+		<tr>-->
 			
 	 </c:forEach>
 	
+</table>
 </body>
 </html>

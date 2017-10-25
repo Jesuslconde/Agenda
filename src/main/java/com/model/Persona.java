@@ -9,12 +9,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.CascadeType;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,7 +42,7 @@ public class Persona implements Serializable {
 	 * @param id, Colum(name) asigna la columna "idpersonas" en la BD al id de Persona.
 	 * */
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="idpersonas")
 	private int id;
 	private String nombre;
@@ -49,10 +51,10 @@ public class Persona implements Serializable {
 	private String dni;
 	private Date fechaNacimiento;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="personat")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="personat", cascade=CascadeType.ALL)
 	private List<Telefono> listTelf;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn(name="idDirecciones")
 	private Direccion dir;
 	
@@ -117,16 +119,15 @@ public class Persona implements Serializable {
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-	
 
 	public List<Telefono> getListTelf() {
 		return listTelf;
 	}
 
+
 	public void setListTelf(List<Telefono> listTelf) {
 		this.listTelf = listTelf;
 	}
-
 
 
 	public Direccion getDir() {

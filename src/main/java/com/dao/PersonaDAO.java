@@ -40,8 +40,8 @@ public class PersonaDAO implements InterfazDAO<Persona>{
 	}
 	
 	@Override
-	public void saveOrUpdate(Persona obj) {
-		sessionFactory.getCurrentSession().saveOrUpdate(obj);
+	public void saveOrUpdate(Persona persona) {
+		sessionFactory.getCurrentSession().saveOrUpdate(persona);
 		
 	}
 

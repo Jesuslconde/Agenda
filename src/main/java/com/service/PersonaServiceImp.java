@@ -39,7 +39,7 @@ public class PersonaServiceImp implements InterfazService<Persona>{
 
 	@Override
 	public void saveOrUpdate(Persona persona) {
-		
+		perDAO.saveOrUpdate(persona);
 	}
 
 	@Override
