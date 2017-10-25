@@ -21,8 +21,8 @@
 		<h2>${per.dir.codPostal}</h2>
 		<h2>${per.dir.localidad}</h2>
 		<h2>${per.dir.provincia}</h2>
-		<h2>${per.emple.cat.nombre}</h2>
-		<h2>${per.emple.depart.nombre}</h2>
+		<h2>${per.emple.getCategoria().nombre}</h2>
+		<h2>${per.emple.getDepartamento().nombre}</h2>
 		<h2>${per.emple.fechaAlta}</h2>
 		<h2>${per.emple.salario}</h2>
 		
