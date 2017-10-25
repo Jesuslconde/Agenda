@@ -46,8 +46,7 @@ public class Supercontroller {
 		ModelAndView model = new ModelAndView("EmpleadoList");//Nombre del formulario
 		
 		model.addObject("listEmpleados", listEmpleados);
-		System.out.println("-- "+listEmpleados.get(0));
-		System.out.println("-- "+listEmpleados.get(1));
+		
 		
 		
 		return model;		
