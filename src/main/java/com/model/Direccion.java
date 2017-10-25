@@ -87,7 +87,7 @@ public class Direccion implements Serializable {
 		this.personad = personad;
 	}
 	
-	//ToString
+	//ToString	
 	@Override
 	public String toString() {
 		return "Direccion [iddireccion=" + iddireccion + ", direccion=" + direccion + ", codpostal=" + codpostal
@@ -102,6 +102,7 @@ public class Direccion implements Serializable {
 		result = prime * result + iddireccion;
 		return result;
 	}
+	
 	
 	//Equals
 	@Override

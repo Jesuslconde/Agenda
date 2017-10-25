@@ -4,11 +4,13 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -31,17 +33,17 @@ public class Empleado implements Serializable{
 	private String fechaAlta;
 	
 	@ManyToOne()
-    @JoinColumn(name = "iddepartamento")
+    @JoinColumn(name = "idDepartamento")
 	private Departamento depart;
 	
 	@ManyToOne()
     @JoinColumn(name = "idCategoria")
 	private Categoria cat;
-	/*
-	@OneToOne(mappedBy="persona")
+	
+	@OneToOne(fetch = FetchType.EAGER )
 	@JoinColumn(name="idempleados")
-	private Persona persona;
-	*/
+	private Persona personaEmp;
+	
 	public int getId() {
 		return idEmp;
 	}
@@ -79,12 +81,22 @@ public class Empleado implements Serializable{
 	public void setCategoria(Categoria categoria) {
 		this.cat = categoria;
 	}
-	/*
-	public Persona getPersona() {
-		return persona;
+
+	public Persona getPersonaEmp() {
+		return personaEmp;
 	}
-	public void setPersona(Persona persona) {
-		this.persona = persona;
+	public void setPersonaEmp(Persona personaEmp) {
+		this.personaEmp = personaEmp;
 	}
-	*/
+	
+	@Override
+	public String toString() {
+		return "Empleado [idEmp=" + idEmp + ", codEmpleado=" + codEmpleado + ", salario=" + salario + ", fechaAlta="
+				+ fechaAlta + ", depart=" + depart + ", cat=" + cat + "]";
+	}
+	
+	
+	
+	
+	
 }

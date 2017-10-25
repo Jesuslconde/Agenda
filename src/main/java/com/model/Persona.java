@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -55,20 +56,18 @@ public class Persona implements Serializable {
 	@JoinColumn(name="idDirecciones")
 	private Direccion dir;
 	
-	
-	/*
-	@OneToOne()
-	@JoinColum(name="idEmpleado", referencedColumName="idEmpleados")
-	private Empleado empleado;
-	*/
-	
+	@OneToOne(fetch = FetchType.EAGER, mappedBy="personaEmp")
+	@JoinColumn(name="idEmpleado", referencedColumnName="idempleados")
+	private Empleado emple;
+
 	@Override
 	public String toString() {
 		return "Persona [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
-				+ ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento + ", dir=" + dir + "]";
+				+ ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento + ", listTelf=" + listTelf + ", dir=" + dir
+				+ ", emple=" + emple + "]";
 	}
-	
-	
+
+
 	public int getId() {
 		return id;
 	}
@@ -129,13 +128,42 @@ public class Persona implements Serializable {
 	}
 
 
-	public Direccion getdir() {
+
+	public Direccion getDir() {
 		return dir;
 	}
 
 
-	public void setdir(Direccion dir) {
+	public void setDir(Direccion dir) {
 		this.dir = dir;
+	}
+
+
+	public Empleado getEmple() {
+		return emple;
+	}
+
+
+	public void setEmple(Empleado emple) {
+		this.emple = emple;
+	}
+	
+	public Persona() {
+	
+	}
+
+	public Persona(int id, String nombre, String apellido1, String apellido2, String dni, Date fechaNacimiento,
+			List<Telefono> listTelf, Direccion dir, Empleado emple) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido1 = apellido1;
+		this.apellido2 = apellido2;
+		this.dni = dni;
+		this.fechaNacimiento = fechaNacimiento;
+		this.listTelf = listTelf;
+		this.dir = dir;
+		this.emple = emple;
 	}
 
 	

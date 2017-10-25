@@ -17,6 +17,16 @@
 		<c:forEach items="${per.listTelf}" var="pertel">
 			<h2>${pertel.telefono}</h2>
 		</c:forEach>
+		<h2>${per.dir.direccion}</h2>
+		<h2>${per.dir.codPostal}</h2>
+		<h2>${per.dir.localidad}</h2>
+		<h2>${per.dir.provincia}</h2>
+		<h2>${per.emple.cat.nombre}</h2>
+		<h2>${per.emple.depart.nombre}</h2>
+		<h2>${per.emple.fechaAlta}</h2>
+		<h2>${per.emple.salario}</h2>
+		
+			
 	 </c:forEach>
 	
 </body>
