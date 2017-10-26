@@ -2,6 +2,7 @@ package com.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,8 +41,7 @@ public class Empleado implements Serializable{
     @JoinColumn(name = "idCategoria")
 	private Categoria cat;
 	
-	@OneToOne(fetch = FetchType.EAGER )
-	@JoinColumn(name="idempleados")
+	@OneToOne(mappedBy="emple", cascade=CascadeType.ALL)
 	private Persona personaEmp;
 	
 	public int getId() {
@@ -50,18 +50,21 @@ public class Empleado implements Serializable{
 	public void setId(int id) {
 		this.idEmp = id;
 	}
+	
 	public String getCodEmpleado() {
 		return codEmpleado;
 	}
 	public void setCodEmpleado(String codEmpleado) {
 		this.codEmpleado = codEmpleado;
 	}
+	
 	public int getSalario() {
 		return salario;
 	}
 	public void setSalario(int salario) {
 		this.salario = salario;
 	}
+	
 	public String getFechaAlta() {
 		return fechaAlta;
 	}
@@ -75,13 +78,25 @@ public class Empleado implements Serializable{
 	public void setDepartamento(Departamento departamento) {
 		this.depart = departamento;
 	}
+
+	public Departamento getDepart() {
+		return depart;
+	}
+	public void setDepart(Departamento depart) {
+		this.depart = depart;
+	}
+	
 	public Categoria getCategoria() {
 		return cat;
 	}
-	public void setCategoria(Categoria categoria) {
-		this.cat = categoria;
+	
+	public Categoria getCat() {
+		return cat;
 	}
-
+	public void setCat(Categoria cat) {
+		this.cat = cat;
+	}
+	
 	public Persona getPersonaEmp() {
 		return personaEmp;
 	}

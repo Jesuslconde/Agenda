@@ -94,20 +94,13 @@ public class Categoria implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-
-
-	public Set<Empleado> getPersonas() {
+	public Set<Empleado> getEmpleados() {
 		return empleados;
 	}
 
-
-
-	public void setPersonas(Set<Empleado> empleados) {
+	public void setEmpleados(Set<Empleado> empleados) {
 		this.empleados = empleados;
 	}
-	
-	
-
 
 	@Override
 	public int hashCode() {

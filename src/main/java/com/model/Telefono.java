@@ -2,6 +2,7 @@ package com.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +29,7 @@ public class Telefono implements Serializable{
 	@Column(name="telefono")          
 	private String telefono;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
 	@JoinColumn(name="idPersona")
 	private Persona personat;
 	

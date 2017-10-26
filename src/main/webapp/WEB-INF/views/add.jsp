@@ -7,21 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<script type="text/javascript">
-function submitForms(){
-
-	document.form2.submit();
-	document.form1.submit();
-	return true ;
-	
-	}
-
-</script>
 </head>
 <body>
 <h1>FORMULARIO DE USUARIOS (add/edit)</h1>
 		<table>
-			<form:form id="form1" action="addpersona" method="post" modelAttribute="persona">
+			<form:form id="form1" action="save" method="post" modelAttribute="persona">
 				<tr>
 					<td>Nombre:</td>
 					<td><form:input path="nombre" /></td>
@@ -36,7 +26,7 @@ function submitForms(){
 				</tr>
 				<tr>
 					<td>Fecha Nacimiento</td>
-					<td><form:input path="fechaNacimiento" /></td>
+					<td><form:input  path="fechaNacimiento" /></td>
 				</tr>
 				<tr>
 					<td>DNI</td>
@@ -53,12 +43,14 @@ function submitForms(){
 					<td><form:input path="dir.provincia" /></td>
 				</tr>
 				
-				<!-- <tr>
-					<td>Fijo:</td>
-					<td><form:input path="listTelf" /></td>
-					<td>Movil:</td>
-					<td><form:input path="listTelf" /></td>
-				</tr> -->
+				<tr>
+					<td>Codigo Empleado:</td>
+					<td><form:input path="emple.codEmpleado" /></td>
+					<td>Fecha Alta:</td>
+					<td><form:input path="emple.fechaAlta"  /></td> 
+					<td>Salario:</td>
+					<td><form:input path="emple.salario" /></td>
+				</tr>
 				<tr>
 					<td><input type="submit"  value="añadir"></td>
 				</tr>

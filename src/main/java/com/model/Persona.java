@@ -49,17 +49,17 @@ public class Persona implements Serializable {
 	private String apellido1;
 	private String apellido2;
 	private String dni;
-	private Date fechaNacimiento;
+	private String fechaNacimiento;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="personat", cascade=CascadeType.ALL)
+	@OneToMany( mappedBy="personat", cascade=CascadeType.ALL)
 	private List<Telefono> listTelf;
 	
 	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn(name="idDirecciones")
 	private Direccion dir;
 	
-	@OneToOne(fetch = FetchType.EAGER, mappedBy="personaEmp")
-	@JoinColumn(name="idEmpleado", referencedColumnName="idempleados")
+	@OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="idEmpleado")
 	private Empleado emple;
 
 	@Override
@@ -111,12 +111,12 @@ public class Persona implements Serializable {
 		this.dni = dni;
 	}
 
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		//SimpleDateFormat dt1 = new SimpleDateFormat("dd-mm-yyyy");
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
@@ -153,7 +153,7 @@ public class Persona implements Serializable {
 	
 	}
 
-	public Persona(int id, String nombre, String apellido1, String apellido2, String dni, Date fechaNacimiento,
+	public Persona(int id, String nombre, String apellido1, String apellido2, String dni, String fechaNacimiento,
 			List<Telefono> listTelf, Direccion dir, Empleado emple) {
 		super();
 		this.id = id;

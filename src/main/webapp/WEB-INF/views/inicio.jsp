@@ -26,21 +26,21 @@
 		<tr>
 		<td>telefono</td>
 		<c:forEach items="${per.listTelf}" var="pertel">
-			<td>${pertel.telefono}</td>
+			<td> ${pertel.telefono}</td>
 		</c:forEach>
 		</tr>
-		<!--  <tr>
-			<td>${per.dir.direccion}</td>
-			<td>${per.dir.codpostal}</td>
-			<td>${per.dir.localidad}</td>
-			<td>${per.dir.provincia}</td>
+		<tr>
+			<td>Calle: ${per.dir.direccion}</td>
+			<td>Cod Postal: ${per.dir.codpostal}</td>
+			<td>Localidad ${per.dir.localidad}</td>
+			<td>Provincia: ${per.dir.provincia}</td>
 		</tr>
 		<tr>
-			<td>${per.emple.getCategoria().nombre}</td>
-			<td>${per.emple.getDepartamento().nombre}</td>
-			<td>${per.emple.fechaAlta}</td>
-			<td>${per.emple.salario}</td>
-		<tr>-->
+			<td>Categoria: ${per.emple.getCategoria().nombre}</td>
+			<td>Departamento: ${per.emple.getDepartamento().nombre}</td>
+			<td>Fecha Inicio: ${per.emple.fechaAlta}</td>
+			<td>Salario: ${per.emple.salario}</td>
+		<tr>
 			
 	 </c:forEach>
 	

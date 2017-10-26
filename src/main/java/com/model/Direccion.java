@@ -57,7 +57,6 @@ public class Direccion implements Serializable {
 		this.codpostal = codpostal;
 	}
 
-
 	public String getLocalidad() {
 		return localidad;
 	}

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.dao.InterfazDAO;
 import com.model.Persona;
+import com.util.FormatDate;
 
 @Transactional
 @Service
@@ -39,6 +40,10 @@ public class PersonaServiceImp implements InterfazService<Persona>{
 
 	@Override
 	public void saveOrUpdate(Persona persona) {
+		
+		System.out.println(persona.getFechaNacimiento());
+		persona.getEmple().setFechaAlta(FormatDate.fechacat(persona.getEmple().getFechaAlta()));
+		persona.setFechaNacimiento(FormatDate.fechacat(persona.getFechaNacimiento()));
 		perDAO.saveOrUpdate(persona);
 	}
 

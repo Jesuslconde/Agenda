@@ -21,10 +21,6 @@ public class CategoriaService implements InterfazService<Categoria>{
 	@Qualifier("categoriaDAO")
 	private InterfazDAO<Categoria> catDAO;
 	
-	@Autowired
-	@Qualifier("empleadoDAO")
-	private InterfazDAO<Empleado> empDAO;
-	
 	
 	public CategoriaService(){
 		System.out.println("constructor categoriaService");
@@ -44,17 +40,8 @@ public class CategoriaService implements InterfazService<Categoria>{
 	}
 	
 
-	public InterfazDAO<Empleado> getEmpDAO() {
-		return empDAO;
-	}
-
-	public void setEmpDAO(InterfazDAO<Empleado> empDAO) {
-		this.empDAO = empDAO;
-	}
-
 	@Override
 	public List<Categoria> list() {
-		System.out.println("--CategoriaService.list");
 		return catDAO.list();
 	}
 
