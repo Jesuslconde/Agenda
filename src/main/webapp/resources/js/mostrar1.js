@@ -1,0 +1,21 @@
+function cambia1(object) {
+    var nombre = ($(object.querySelector('#nombre')).text());
+    var telefono = ($(object.querySelector('#telefono')).text());
+    var categoria = ($(object.querySelector('#nombreCat')).text());
+    var localidad = ($(object.querySelector('#localidad')).text());
+    var provincia = ($(object.querySelector('#provincia')).text());
+    var departamento = ($(object.querySelector('#nombreDepart')).text());
+    var codigoEmpl = ($(object.querySelector('#codigoEmpl')).text());
+    var descripcionCat = ($(object.querySelector('#descripcionCat')).text());
+    $("#nombreUP").html(nombre);
+    $("#nombreDeptUP").html(departamento);
+    $("#nombreCatUP").html(categoria);
+    $("#nombreDesc").html(nombre);
+    $("#telefonoDesc").html(telefono);
+    $("#localidadDesc").html(localidad);
+    $("#provinciaDesc").html(provincia);
+    $("#nombreDepartDesc").html(departamento);
+    $("#nombreCatDesc").html(categoria);
+    $("#descripcionCatDesc").html(descripcionCat);
+    $("#codigoEmplDesc").html(codigoEmpl);
+};

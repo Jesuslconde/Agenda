@@ -1,0 +1,9 @@
+.media{
+    cursor: pointer;
+}
+#listaContacto{
+    background-color: steelblue;
+}
+#listaContacto div{
+    color:white;
+}
