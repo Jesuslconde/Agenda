@@ -112,7 +112,6 @@ public class Persona implements Serializable {
 	}
 
 	public String getFechaNacimiento() {
-		//SimpleDateFormat dt1 = new SimpleDateFormat("dd-mm-yyyy");
 		return fechaNacimiento;
 	}
 
