@@ -10,12 +10,54 @@ function cambia1(object) {
     $("#nombreUP").html(nombre);
     $("#nombreDeptUP").html(departamento);
     $("#nombreCatUP").html(categoria);
-    $("#nombreDesc").html(nombre);
-    $("#telefonoDesc").html(telefono);
-    $("#localidadDesc").html(localidad);
-    $("#provinciaDesc").html(provincia);
-    $("#nombreDepartDesc").html(departamento);
-    $("#nombreCatDesc").html(categoria);
-    $("#descripcionCatDesc").html(descripcionCat);
-    $("#codigoEmplDesc").html(codigoEmpl);
+    $("#telefonoDescrip").css("display", "");
+    $("#localidadDescrip").css("display", "");
+    $("#provinciaDescrip").css("display", "");
+    $("#nombreDepartDescrip").css("display", "");
+    $("#nombreCatDescrip").css("display", "");
+    $("#descripcionCatDescrip").css("display", "");
+    $("#codigoEmplDescrip").css("display", "");
+
+
+    
+    if (nombre != "") {
+        $("#nombreDesc").html(nombre);
+    } else {
+        $("#nombreDescrip").css("display", "none");
+    }
+    if (telefono != "") {
+        $("#telefonoDesc").html(telefono);
+    } else {
+        $("#telefonoDescrip").css("display", "none");
+    }
+    if (localidad != "") {
+        $("#localidadDesc").html(localidad);
+    } else {
+        $("#localidadDescrip").css("display", "none");
+    }
+    if (provincia != "") {
+        $("#provinciaDesc").html(provincia);
+    } else {
+        $("#provinciaDescrip").css("display", "none");
+    }
+    if (departamento != "") {
+        $("#nombreDepartDesc").html(departamento);
+    } else {
+        $("#nombreDepartDescrip").css("display", "none");
+    }
+    if (categoria != "") {
+        $("#nombreCatDesc").html(categoria);
+    } else {
+        $("#categoriaDescrip").css("display", "none");
+    }
+    if (descripcionCat != "") {
+        $("#descripcionCatDesc").html(descripcionCat);
+    } else {
+        $("#descripcionCatDescrip").css("display", "none");
+    }
+    if (codigoEmpl != "") {
+        $("#codigoEmplDesc").html(codigoEmpl);
+    } else {
+        $("#codigoEmplDescrip").css("display", "none");
+    }
 };

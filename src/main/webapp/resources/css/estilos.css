@@ -7,3 +7,48 @@
 #listaContacto div{
     color:white;
 }
+
+#infoContacto{
+    background-color: steelblue;
+    color:white;
+    padding:13px;
+    margin-bottom:10px;
+     margin-top: -15px;
+     margin-left: -15px;
+     margin-right: -15px;
+     border-top-left-radius: 4px;
+     border-top-right-radius: 4px;
+}
+#cabecera{
+    background-color: steelblue;
+    color:white;
+    padding:10px;
+    text-align:center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+ body {
+            /*margin-top: 20px;*/
+            background: #f5f7fa;
+        }
+
+        .panel.panel-default {
+            border-top-width: 3px;
+        }
+
+        .panel {
+            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .14), 0 2px 2px 0 rgba(0, 0, 0, .098), 0 1px 5px 0 rgba(0, 0, 0, .084);
+            border: 0;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .thumb96 {
+            width: 96px!important;
+            height: 96px!important;
+        }
+
+        .thumb48 {
+            width: 48px!important;
+            height: 48px!important;
+        }

@@ -20,48 +20,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrap"/>   
 	<link href="${bootstrap}" rel="stylesheet" />
-    <spring:url value="resources/css/estilos.css" var="custom"/>
-    <link href="${custom}" rel="stylesheet" />
     <spring:url value="resources/css/container.css" var="buscar"/>
     <link href="${buscar}" rel="stylesheet" />
-    <spring:url value="resources/js/bootstrap.min.js" var="bootstrapjs"/>
-    <script type="text/javascript" src="${bootstrapjs}"></script>
+     <spring:url value="resources/css/estilos.css" var="custom"/>
+    <link href="${custom}" rel="stylesheet" />
     <spring:url value="resources/js/jquery.min.js" var="jquery"/>
     <script type="text/javascript" src="${jquery}"></script>
+    <spring:url value="resources/js/bootstrap.min.js" var="bootstrapjs"/>
+    <script type="text/javascript" src="${bootstrapjs}"></script>
     <spring:url value="resources/js/mostrar1.js" var="script"/>
     <script type="text/javascript" src="${script}"></script>
     
     
    
     <style type="text/css">
-        body {
-            margin-top: 20px;
-            background: #f5f7fa;
-        }
-
-        .panel.panel-default {
-            border-top-width: 3px;
-        }
-
-        .panel {
-            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .14), 0 2px 2px 0 rgba(0, 0, 0, .098), 0 1px 5px 0 rgba(0, 0, 0, .084);
-            border: 0;
-            border-radius: 4px;
-            margin-bottom: 16px;
-        }
-
-        .thumb96 {
-            width: 96px!important;
-            height: 96px!important;
-        }
-
-        .thumb48 {
-            width: 48px!important;
-            height: 48px!important;
-        }
+       
     </style>
 </head>
 <body>
+ <div>
+       <h1 id="cabecera">Agenda Luca</h1>
+   </div>
        <div class="container bootstrap snippet">
         <div class="row ng-scope">
             <div class="col-md-4">
@@ -133,53 +112,52 @@
                                 </ul>
                             </div>
                         </div>
-                        <div id="infoContacto" class="h4 text-center panel-title">Información de contacto</div>
+                         <div class="h4 panel-title text-center" id="infoContacto">Información de contacto</div>
                         <div class="row pv-lg">
                             <div class="col-lg-2"></div>
                             <div class="col-lg-8">
                                 <form class="form-horizontal ng-pristine ng-valid">
-                                    <div class="form-group">
+                                    <div class="form-group" id="nombreDescrip">
                                         <label class="col-sm-4">Nombre</label>
                                         <div class="col-sm-8" id="nombreDesc">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="telefonoDescrip">
                                         <label class="col-sm-4">Teléfono</label>
                                         <div class="col-sm-8" id="telefonoDesc">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="localidadDescrip">
                                         <label class="col-sm-4">Localidad</label>
                                         <div class="col-sm-8" id="localidadDesc">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="provinciaDescrip">
                                         <label class="col-sm-4">Provincia</label>
                                         <div class="col-sm-8" id="provinciaDesc">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="departamentoDescrip">
                                         <label class="col-sm-4">Departamento</label>
                                         <div class="col-sm-8" id="nombreDepartDesc">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="categoriaDescrip">
                                         <label class="col-sm-4">Categoría</label>
                                         <div class="col-sm-8" id="nombreCatDesc">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="descripcionCatDescrip">
                                         <label class="col-sm-4">Descripción de categoría</label>
                                         <div class="col-sm-8" id="descripcionCatDesc">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="codigoEmplDescrip">
                                         <label class="col-sm-4">Código de empleado</label>
                                         <div class="col-sm-8" id="codigoEmplDesc">
                                         </div>
                                     </div>
                                 </form>
-                                <div class="text-right"><a class="text-muted" href="#">Borrar contacto</a></div>
                             </div>
                         </div>
                     </div>
@@ -205,7 +183,7 @@
                 departamento = ($(this.querySelector('#nombreDepart')).text());
                 codigoEmpl = ($(this.querySelector('#codigoEmpl')).text());
                 descripcionCat = ($(this.querySelector('#descripcionCat')).text());
-                 if (nombre.toLowerCase().indexOf(texto) > -1){
+                 if (nombre.toLowerCase().indexOf(texto) > -1|| telefono.toLowerCase().indexOf(texto) > -1 || categoria.toLowerCase().indexOf(texto) > -1 || departamento.toLowerCase().indexOf(texto) > -1){
                     
                 } else{
                    $(this).parent().parent().css("display","none");
